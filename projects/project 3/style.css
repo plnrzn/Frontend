@@ -1,0 +1,97 @@
+body {
+    border: 20px solid Maroon;
+    padding: 20px;
+  }
+  
+  h1 {
+    color: purple;
+    background-color: #CCAAFF;
+    text-align: center;
+    border: 2px dashed #DD22FF;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20pt;
+    letter-spacing: 10px;
+    word-spacing: 20px;
+    text-shadow: .1em .1em .2em lightslategray;
+    margin: 1em 0;
+    cursor: all-scroll;
+  }
+  
+  h2 {
+    color: #4B0082;
+    background-color: #CC99FF;
+    text-align: center;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18pt;
+    letter-spacing: 8px;
+    word-spacing: 15px;
+    border-bottom: 2px dashed #8244FF;
+    border-top: 2px dotted #8244FF;
+    margin: 1em 0;
+    cursor: help;
+  }
+  
+  ul {
+    margin-bottom: 64px;
+  }
+  
+  li:nth-child(2n+1) {
+    background-color: Bisque;
+    list-style-type: square;
+  }
+  
+  li:nth-child(even) {
+    background-color: Aquamarine;
+    list-style-type: circle;
+  }
+  
+  li:first-child {
+    background-color: LightSalmon;
+  }
+  
+  li:last-child {
+    background-color: Fuchsia;
+  }
+  
+  li::selection {
+    color: red;
+    background-color: Lime;
+  }
+  
+  table {
+    border: 3px solid navy;
+    padding: 20px;
+    border-spacing: 10px;
+    width: 100%;
+    cursor: crosshair;
+  }
+  
+  th {
+    background-color: LightBlue;
+    padding: 10px;
+  }
+  
+  td {
+    padding: 4px;
+  }
+  
+  td.except {
+    border: 2px solid red;
+    text-decoration: line-through;
+  }
+  
+  tr:nth-child(odd) {
+    background-color: Fuchsia;
+  }
+  
+  tr:nth-child(even) {
+    background-color: Aquamarine;
+  }
+  
+  tr:hover {
+    background-color: yellow;
+  }
+  
+  tr:active {
+    background-color: orange;
+  }
