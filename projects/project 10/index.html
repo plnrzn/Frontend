@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nike - Официальный интернет-магазин</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">NIKE</div>
+    
+    <nav class="menu">
+        <a href="#hero">Главная</a>
+        <a href="#collections">Коллекция</a>
+        <a href="#products">Товары</a>
+        <a href="#info">О нас</a>
+        <a href="#contacts">Контакты</a>
+    </nav>
+    
+    <div class="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</header>
+
+
+  <main>
+   
+    <section id="hero" class="hero">
+      <div class="hero-content">
+        <h1>Новая коллекция Nike Air</h1>
+        <p>Инновационные технологии для максимального комфорта и производительности</p>
+        <button class="btn" onclick="document.getElementById('collections').scrollIntoView({behavior: 'smooth'})">Смотреть коллекцию</button>
+      </div>
+    </section>
+
+    <section style="text-align: center; padding: 40px 0;">
+      <button id="openModal" class="btn">Получить скидку 10% на первую покупку</button>
+    </section>
+
+   
+    <div class="modal" id="modal">
+      <div class="modal-content">
+        <h2>Подпишитесь на рассылку</h2>
+        <p>Получайте эксклюзивные предложения, информацию о новых коллекциях и специальные скидки для подписчиков.</p>
+        <form>
+          <input type="text" placeholder="Ваше имя" required>
+          <input type="email" placeholder="Ваш email" required>
+          <div class="modal-buttons">
+            <button type="submit" class="btn">Подписаться</button>
+            <button type="button" class="btn" onclick="closeModal()" style="background-color: #ddd; color: #333;">Закрыть</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    
+    <section id="collections" class="tabs">
+      <div class="tabs-background">
+        <div class="tabs-slider" id="tabsSlider">
+          <div class="tabs-slide" style="background-image: url('photo_2025-04-15_11-19-54.jpg');"></div>
+          <div class="tabs-slide" style="background-image: url('photo_2025-04-15_11-19-54.jpg');"></div>
+          
+        </div>
+      </div>
+      
+      <div class="tabs-content">
+        <div class="tab-btns">
+          <button class="tab-btn active" onclick="openTab('men')">Мужское</button>
+          <button class="tab-btn" onclick="openTab('women')">Женское</button>
+        </div>
+
+        <div id="men" class="tab-content active">
+          <h3>Мужская коллекция Nike</h3>
+          <p>Откройте для себя последние инновации в мужской спортивной одежде и обуви. Наша коллекция сочетает в себе передовые технологии и стильный дизайн для максимального комфорта и производительности.</p>
+          <ul>
+            <li>Кроссовки для бега с амортизацией Air и Zoom</li>
+            <li>Баскетбольные кроссовки с улучшенной поддержкой</li>
+            <li>Повседневные модели для городского стиля</li>
+            <li>Спортивная одежда из дышащих материалов</li>
+          </ul>
+          <button class="btn" style="margin-top: 20px;" onclick="filterProducts('shoes')">Смотреть кроссовки</button>
+        </div>
+        
+        <div id="women" class="tab-content">
+          <h3>Женская коллекция Nike</h3>
+          <p>Вдохновляющая коллекция для активных женщин. От тренировок в зале до прогулок по городу - найдите идеальную пару кроссовок и комплект одежды для любого случая.</p>
+          <ul>
+            <li>Легкие кроссовки для фитнеса и бега</li>
+            <li>Стильные модели для повседневной носки</li>
+            <li>Спортивные костюмы и топы с поддержкой</li>
+            <li>Яркие расцветки и модные принты</li>
+          </ul>
+          <button class="btn" style="margin-top: 20px;" onclick="filterProducts('clothing')">Смотреть одежду</button>
+        </div>
+    </section>
+
+    
+    <section class="filter-section">
+      <div class="filter-btns">
+        <button class="filter active" onclick="filterProducts('all')">Все товары</button>
+        <button class="filter" onclick="filterProducts('shoes')">Кроссовки</button>
+        <button class="filter" onclick="filterProducts('clothing')">Одежда</button>
+        <button class="filter" onclick="filterProducts('accessories')">Аксессуары</button>
+      </div>
+    </section>
+
+    <section id="products" class="products-container">
+      <h2>Популярные товары</h2>
+      <div class="products">
+        <div class="product" data-category="shoes">
+          <div class="product-badge">Новинка</div>
+          <img src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/skwgyqrbfzhu6uyeh0gg/air-max-270-mens-shoes-KkLcGR.png" alt="Кроссовки Nike Air Max 270" class="product-img">
+          <div class="product-info">
+            <h3>Кроссовки Air Max 270</h3>
+            <p>Легендарные кроссовки с амортизацией Air, идеальны для повседневной носки.</p>
+            <div class="product-price">
+              <div>
+                <span class="price">12 999 ₽</span>
+                <span class="old-price">14 999 ₽</span>
+              </div>
+              <button class="btn" onclick="addToCart('Air Max 270', 12999)">Купить</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="product" data-category="clothing">
+          <img src="photo_2025-04-15_11-24-57.jpg" alt="Толстовка Nike Club Fleece" class="product-img">
+          <div class="product-info">
+            <h3>Толстовка Club Fleece</h3>
+            <p>Мягкая толстовка с капюшоном для повседневной носки.</p>
+            <div class="product-price">
+              <div>
+                <span class="price">5 999 ₽</span>
+              </div>
+              <button class="btn" onclick="addToCart('Толстовка Club Fleece', 5999)">Купить</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="product" data-category="shoes">
+          <img src="photo_2025-04-15_11-24-58.jpg" alt="Кроссовки Nike Air Force 1" class="product-img">
+          <div class="product-info">
+            <h3>Кроссовки Air Force 1</h3>
+            <p>Классические баскетбольные кроссовки, ставшие иконой стиля.</p>
+            <div class="product-price">
+              <div>
+                <span class="price">9 999 ₽</span>
+              </div>
+              <button class="btn" onclick="addToCart('Air Force 1', 9999)">Купить</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="product" data-category="shoes">
+          <div class="product-badge">Новинка</div>
+          <img src="photo_2025-04-15_11-24-58 (2).jpg" alt="Кроссовки Nike Air Jordan 1" class="product-img">
+          <div class="product-info">
+            <h3>Кроссовки Air Jordan 1</h3>
+            <p>Легендарные баскетбольные кроссовки с оригинальным дизайном.</p>
+            <div class="product-price">
+              <div>
+                <span class="price">15 999 ₽</span>
+              </div>
+              <button class="btn" onclick="addToCart('Air Jordan 1', 15999)">Купить</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="product" data-category="clothing">
+          <img src="photo_2025-04-15_11-24-58 (3).jpg" alt="Футболка Nike Club" class="product-img">
+          <div class="product-info">
+            <h3>Футболка Club</h3>
+            <p>Классическая хлопковая футболка с логотипом Nike.</p>
+            <div class="product-price">
+              <div>
+                <span class="price">2 999 ₽</span>
+                <span class="old-price">3 499 ₽</span>
+              </div>
+              <button class="btn" onclick="addToCart('Футболка Club', 2999)">Купить</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="product" data-category="accessories">
+          <div class="product-badge">-20%</div>
+          <img src="photo_2025-04-15_11-25-28.jpg" alt="Рюкзак Nike Heritage" class="product-img">
+          <div class="product-info">
+            <h3>Рюкзак Heritage</h3>
+            <p>Стильный и функциональный рюкзак для спорта и города.</p>
+            <div class="product-price">
+              <div>
+                <span class="price">3 999 ₽</span>
+                <span class="old-price">4 999 ₽</span>
+              </div>
+              <button class="btn" onclick="addToCart('Рюкзак Heritage', 3999)">Купить</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slider">
+        <div class="slider-container" id="slider">
+          <div class="slide">Скидки до 50% на летнюю коллекцию! Только до конца месяца</div>
+          <div class="slide">Новая коллекция Nike Air уже в продаже</div>
+          <div class="slide">Бесплатная доставка при заказе от 5000 ₽</div>
+          <div class="slide">Nike — выбор чемпионов. Оригинальная продукция</div>
+        </div>
+      </section>
+
+      <section class="accordion">
+        <h2>Часто задаваемые вопросы</h2>
+        
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">Гарантия на продукцию</div>
+          <div class="accordion-body">
+            <p>Мы предоставляем официальную гарантию на всю продукцию Nike в течение 1 года с момента покупки. Гарантия покрывает производственные дефекты.</p>
+            <p>Если вы не удовлетворены покупкой, вы можете обменять или вернуть товар в течение 14 дней при условии сохранения товарного вида и упаковки.</p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">Доставка и сроки</div>
+          <div class="accordion-body">
+            <p>Мы осуществляем доставку по всей России:</p>
+            <ul>
+              <li>Курьерская доставка - 1-3 рабочих дня (в крупные города)</li>
+              <li>Почта России - 5-14 рабочих дней (в зависимости от региона)</li>
+              <li>Самовывоз из фирменных магазинов Nike - на следующий день после оформления заказа</li>
+            </ul>
+            <p>Бесплатная доставка доступна при заказе от 5000 ₽.</p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">Способы оплаты</div>
+          <div class="accordion-body">
+            <p>Мы принимаем следующие способы оплаты:</p>
+            <ul>
+              <li>Банковские карты Visa, Mastercard, Мир</li>
+              <li>Электронные кошельки: PayPal, Qiwi, WebMoney</li>
+              <li>Оплата при получении (наличными или картой)</li>
+              <li>Рассрочка и кредит от партнерских банков</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">Как определить размер?</div>
+          <div class="accordion-body">
+            <p>Для определения правильного размера:</p>
+            <ol>
+              <li>Измерьте длину стопы в сантиметрах от пятки до кончика большого пальца</li>
+              <li>Сравните с нашей размерной сеткой (доступна на странице каждого товара)</li>
+              <li>Если вы находитесь между размерами, рекомендуем выбрать больший размер</li>
+            </ol>
+            <p>Для одежды используйте свои стандартные размеры или измерьте обхват груди, талии и бедер.</p>
+          </div>
+        </div>
+      </section>
+  
+    
+      <section id="info" class="info">
+        <h2>О компании Nike</h2>
+        <p>Nike — мировой лидер в производстве спортивной одежды, обуви и аксессуаров. С момента основания в 1964 году компания стремится вдохновлять каждого спортсмена в мире, предлагая инновационные продукты, опыт и услуги.</p>
+        <p>Наш интернет-магазин предлагает только оригинальную продукцию Nike с официальной гарантией. Мы тщательно следим за качеством обслуживания и предлагаем:</p>
+        <ul>
+          <li>Широкий ассортимент последних коллекций</li>
+          <li>Конкурентные цены и регулярные акции</li>
+          <li>Быструю доставку по всей России</li>
+          <li>Профессиональные консультации</li>
+          <li>Гарантию подлинности всех товаров</li>
+        </ul>
+      </section>
+  
+
+      <section id="contacts" class="info">
+        <h2>Наши контакты</h2>
+        <p>Мы всегда рады помочь вам с выбором и ответить на все вопросы:</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+          <div>
+            <h3>Телефоны</h3>
+            <p><i class="fas fa-phone"></i> 8 (800) 555-35-35 (бесплатно по России)</p>
+            <p><i class="fas fa-mobile-alt"></i> +7 (495) 123-45-67 (Москва)</p>
+          </div>
+          
+          <div>
+            <h3>Электронная почта</h3>
+            <p><i class="fas fa-envelope"></i> <a href="mailto:support@nike.ru">support@nike.ru</a></p>
+            <p><i class="fas fa-envelope"></i> <a href="mailto:sales@nike.ru">sales@nike.ru</a></p>
+          </div>
+          
+          <div>
+            <h3>Адрес</h3>
+            <p><i class="fas fa-map-marker-alt"></i> г. Москва, ул. Спортивная, д. 10</p>
+            <p><i class="fas fa-clock"></i> Пн-Пт: 9:00-21:00, Сб-Вс: 10:00-20:00</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  
+    <script>
+    
+     const burger = document.querySelector('.burger');
+        const menu = document.querySelector('.menu');
+        
+        burger.addEventListener('click', () => {
+            menu.classList.toggle('active');
+            burger.classList.toggle('active');
+        });
+
+      
+
+      const modal = document.getElementById('modal');
+      document.getElementById('openModal').onclick = () => {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; 
+      };
+      
+      function closeModal() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto'; 
+      }
+
+      window.onclick = e => {
+        if (e.target === modal) closeModal();
+      };
+      
+ 
+      document.onkeydown = e => {
+        if (e.key === 'Escape') closeModal();
+      };
+      
+      
+      function openTab(tabId) {
+       
+        document.querySelectorAll('.tab-content').forEach(tab => {
+          tab.classList.remove('active');
+        });
+        
+
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+          btn.classList.remove('active');
+        });
+        
+        
+        document.getElementById(tabId).classList.add('active');
+        
+      
+        event.currentTarget.classList.add('active');
+      }
+      
+     
+      function filterProducts(category) {
+        
+        document.querySelectorAll('.filter').forEach(btn => {
+          btn.classList.remove('active');
+        });
+        
+    
+        event.currentTarget.classList.add('active');
+        
+        
+        document.querySelectorAll('.product').forEach(product => {
+          if (category === 'all' || product.dataset.category === category) {
+            product.style.display = 'block';
+          } else {
+            product.style.display = 'none';
+          }
+        });
+      }
+      
+   
+      let currentSlide = 0;
+      const slides = document.querySelectorAll('.slide');
+      const slider = document.getElementById('slider');
+      
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        updateSlider();
+      }
+      
+      function updateSlider() {
+        slider.style.transform = `translateX(-${100 * currentSlide}%)`;
+      }
+      
+    
+      setInterval(nextSlide, 5000);
+      
+     
+      function toggleAccordion(header) {
+        const item = header.parentElement;
+        const body = header.nextElementSibling;
+        const isActive = header.classList.contains('active');
+        
+       
+        document.querySelectorAll('.accordion-header').forEach(h => {
+          h.classList.remove('active');
+          h.nextElementSibling.classList.remove('show');
+        });
+        
+       
+        if (!isActive) {
+          header.classList.add('active');
+          body.classList.add('show');
+        }
+      }
+      
+    
+      let cart = [];
+      
+      function addToCart(name, price) {
+        cart.push({ name, price });
+        updateCartCounter();
+        showAddedToCart(name);
+      }
+      
+      function updateCartCounter() {
+        const counter = document.getElementById('cartCounter');
+        if (counter) {
+          counter.textContent = cart.length;
+        } else {
+     
+          const burger = document.querySelector('.burger');
+          const counterEl = document.createElement('span');
+          counterEl.id = 'cartCounter';
+          counterEl.className = 'cart-counter';
+          counterEl.textContent = cart.length;
+          burger.appendChild(counterEl);
+        }
+      }
+      
+      function showAddedToCart(name) {
+        alert(`Товар "${name}" добавлен в корзину!`);
+      }
+      
+   
+      document.addEventListener('DOMContentLoaded', () => {
+    
+        document.querySelector('.tab-btn').click();
+        
+      
+        document.querySelector('.filter').click();
+        
+    
+        const style = document.createElement('style');
+        style.textContent = `
+          .cart-counter {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #e4002b;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+          }
+        `;
+        document.head.appendChild(style);
+      });
+    </script>
+  </body>
+  </html>
+  
