@@ -1,0 +1,155 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.header {
+  background-color: #d78bb9;
+  padding: 20px 0;
+}
+.header__title {
+  text-align: center;
+  font-size: 55px;
+  color: #333;
+}
+.header__nav {
+  text-align: left;
+  padding: 90;
+  list-style: none;
+  padding-left: 500px;
+}
+.header__nav__list {
+  list-style: none;
+  padding: 0;
+  display: inline;
+  padding-left: 500px;
+}
+.header__nav__list__item {
+  display: inline;
+  margin-right: 20px;
+  padding-left: 500px;
+}
+.header__nav__list__item__link {
+  text-decoration: none;
+  color: #007bff;
+}
+.header__nav__list__item__link:hover {
+  color: #0056b3;
+}
+
+.main {
+  padding: 20px 0;
+}
+.main .about {
+  text-align: center;
+}
+.main .about__title {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+.main .about__text {
+  font-size: 16px;
+  color: #666;
+}
+.main .products {
+  text-align: center;
+}
+.main .products__title {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+.main .products__list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.main .products__list .product {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  width: calc(33% - 40px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.main .products__list .product__image {
+  max-width: 100%;
+  height: auto;
+}
+.main .products__list .product__name {
+  font-size: 18px;
+  margin-top: 10px;
+}
+.main .products__list .product__description {
+  font-size: 14px;
+  color: #666;
+}
+.main .products__list .product__price {
+  font-size: 16px;
+  color: #333;
+  margin-top: 5px;
+}
+.main .products__list .product__button {
+  background-color: #cd51ac;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.main .products__list .product__button:hover {
+  background-color: #671e62;
+}
+.main .contact {
+  text-align: center;
+}
+.main .contact__title {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+.main .contact__form {
+  display: inline-block;
+  text-align: left;
+}
+.main .contact__form__label {
+  display: block;
+  margin-bottom: 5px;
+}
+.main .contact__form__input, .main .contact__form__textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.main .contact__form__textarea {
+  height: 100px;
+}
+.main .contact__form__button {
+  background-color: #cd51ac;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.main .contact__form__button:hover {
+  background-color: #671e62;
+}
+
+.footer {
+  background-color: #d78bb9;
+  text-align: center;
+  padding: 20px 0;
+}
+.footer__text {
+  color: #666;
+}/*# sourceMappingURL=main.css.map */
