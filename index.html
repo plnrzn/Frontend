@@ -1,1 +1,475 @@
-
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио | Полина Рязанцева</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #4a4e69;
+            --secondary: #9a8c98;
+            --accent: #c9ada7;
+            --light: #f2e9e4;
+            --dark: #22223b;
+            --card-bg: rgba(255, 255, 255, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            color: var(--light);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 20px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent);
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: var(--light);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, var(--light) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.4em;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--accent);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+            font-size: 2.5em;
+            position: relative;
+            padding-bottom: 20px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .about-section {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 60px;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .about-text h3 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .skill-category {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .skill-category h3 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .skill-list {
+            list-style-type: none;
+        }
+        
+        .skill-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .skill-list i {
+            color: var(--accent);
+            width: 24px;
+            font-size: 1.1em;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+            color: var(--light);
+            display: block;
+            position: relative;
+            overflow: hidden;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .project-icon {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            color: var(--accent);
+            text-align: center;
+        }
+        
+        .project-title {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .project-description {
+            opacity: 0.9;
+            font-size: 1em;
+            text-align: center;
+            line-height: 1.6;
+        }
+        
+        .project-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            margin-top: 20px;
+            font-style: italic;
+            opacity: 0.7;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .social-links a {
+            color: var(--light);
+            font-size: 1.8em;
+            transition: var(--transition);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .contact-btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background: var(--accent);
+            color: var(--dark);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: var(--transition);
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            background: var(--light);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            
+            .subtitle {
+                font-size: 1.2em;
+            }
+            
+            .section-title {
+                font-size: 2em;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-section {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="profile-img">
+                <i class="fas fa-user"></i>
+            </div>
+            <h1>Полина Рязанцева</h1>
+            <p class="subtitle">Студентка по специальности "Компьютерный дизайн"</p>
+            <p class="subtitle">Специализируюсь на фронтенд-разработке и создании современных цифровых интерфейсов</p>
+        </header>
+        
+        <div class="about-section">
+            <div class="about-text">
+                <h3>Обо мне</h3>
+                <p>Я студентка, обучающаяся по специальности "Компьютерный дизайн". Это направление объединяет в себе художественное творчество и современные цифровые технологии, что позволяет создавать не только визуально привлекательные, но и функциональные интерфейсы.</p>
+                <p>Моя цель — стать специалистом, способным создавать цифровые продукты, которые не только красиво выглядят, но и обеспечивают удобство использования. Я увлечена процессом превращения идей в реальные интерфейсы, которые решают конкретные задачи пользователей.</p>
+                <p>В свободное время я изучаю новые технологии в веб-разработке, экспериментирую с дизайном и работаю над личными проектами для расширения своего портфолио.</p>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Мои Навыки</h2>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3><i class="fas fa-pencil-alt"></i> Графический дизайн</h3>
+                <ul class="skill-list">
+                    <li><i class="fas fa-check"></i> Adobe Photoshop - профессиональная обработка изображений</li>
+                    <li><i class="fas fa-check"></i> Adobe Illustrator - создание векторной графики и иллюстраций</li>
+                    <li><i class="fas fa-check"></i> Figma - проектирование интерфейсов и прототипирование</li>
+                    <li><i class="fas fa-check"></i> Основы композиции и цветоведения</li>
+                    <li><i class="fas fa-check"></i> Типографика и работа со шрифтами</li>
+                    <li><i class="fas fa-check"></i> Создание брендбуков и гайдлайнов</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3><i class="fas fa-code"></i> Фронтенд-разработка</h3>
+                <ul class="skill-list">
+                    <li><i class="fas fa-check"></i> HTML5 - семантическая верстка, доступность</li>
+                    <li><i class="fas fa-check"></i> CSS3 - Flexbox, Grid, анимации, трансформации</li>
+                    <li><i class="fas fa-check"></i> JavaScript (ES6+) - основы программирования</li>
+                    <li><i class="fas fa-check"></i> Адаптивный и отзывчивый дизайн</li>
+                    <li><i class="fas fa-check"></i> Препроцессоры SASS/SCSS</li>
+                    <li><i class="fas fa-check"></i> Bootstrap 5 - компонентный подход</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3><i class="fas fa-paint-brush"></i> UI/UX дизайн</h3>
+                <ul class="skill-list">
+                    <li><i class="fas fa-check"></i> Проектирование пользовательских интерфейсов</li>
+                    <li><i class="fas fa-check"></i> Создание пользовательских сценариев</li>
+                    <li><i class="fas fa-check"></i> Прототипирование и вайрфрейминг</li>
+                    <li><i class="fas fa-check"></i> Тестирование удобства использования</li>
+                    <li><i class="fas fa-check"></i> Анализ целевой аудитории</li>
+                    <li><i class="fas fa-check"></i> Разработка дизайн-систем</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3><i class="fas fa-tools"></i> Дополнительные навыки</h3>
+                <ul class="skill-list">
+                    <li><i class="fas fa-check"></i> Работа с системами контроля версий (Git)</li>
+                    <li><i class="fas fa-check"></i> Основы 3D-моделирования в Blender</li>
+                    <li><i class="fas fa-check"></i> Английский язык (техническая документация)</li>
+                    <li><i class="fas fa-check"></i> Основы веб-аналитики</li>
+                    <li><i class="fas fa-check"></i> Принципы Agile/Scrum</li>
+                    <li><i class="fas fa-check"></i> Кроссбраузерная и кроссплатформенная разработка</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Мои Проекты</h2>
+        <div class="projects-grid">
+            <a href="#" class="project-card">
+                <div class="project-icon"><i class="fas fa-laptop-code"></i></div>
+                <div class="project-title">Корпоративный сайт</div>
+                <div class="project-description">Разработка дизайна и верстка современного корпоративного сайта с адаптивным дизайном</div>
+                <div class="project-placeholder">Здесь будет изображение проекта</div>
+            </a>
+            
+            <a href="#" class="project-card">
+                <div class="project-icon"><i class="fas fa-mobile-alt"></i></div>
+                <div class="project-title">Мобильное приложение</div>
+                <div class="project-description">UI/UX дизайн мобильного приложения для фитнес-трекера с интуитивным интерфейсом</div>
+                <div class="project-placeholder">Здесь будет изображение проекта</div>
+            </a>
+            
+            <a href="#" class="project-card">
+                <div class="project-icon"><i class="fas fa-shopping-cart"></i></div>
+                <div class="project-title">Интернет-магазин</div>
+                <div class="project-description">Дизайн и фронтенд интернет-магазина с удобной системой фильтрации и корзиной</div>
+                <div class="project-placeholder">Здесь будет изображение проекта</div>
+            </a>
+            
+            <a href="#" class="project-card">
+                <div class="project-icon"><i class="fas fa-palette"></i></div>
+                <div class="project-title">Портфолио фотографа</div>
+                <div class="project-description">Создание минималистичного портфолио для фотографа с акцентом на визуальный контент</div>
+                <div class="project-placeholder">Здесь будет изображение проекта</div>
+            </a>
+            
+            <a href="#" class="project-card">
+                <div class="project-icon"><i class="fas fa-chart-line"></i></div>
+                <div class="project-title">Дашборд аналитики</div>
+                <div class="project-description">Разработка интерфейса дашборда для визуализации бизнес-метрик и аналитики</div>
+                <div class="project-placeholder">Здесь будет изображение проекта</div>
+            </a>
+            
+            <a href="#" class="project-card">
+                <div class="project-icon"><i class="fas fa-gamepad"></i></div>
+                <div class="project-title">Игровой интерфейс</div>
+                <div class="project-description">Создание UI для мобильной игры с акцентом на удобство и визуальную привлекательность</div>
+                <div class="project-placeholder">Здесь будет изображение проекта</div>
+            </a>
+        </div>
+        
+        <footer>
+            <h3>Свяжитесь со мной</h3>
+            <p>Я открыта для новых проектов и возможностей сотрудничества</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-vk"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-behance"></i></a>
+            </div>
+            <a href="mailto:polyana.ryazanceva@example.com" class="contact-btn">Написать мне</a>
+            <p style="margin-top: 40px;">© 2025 Полина Рязанцева. Все права защищены.</p>
+        </footer>
+    </div>
+</body>
+</html>
