@@ -20,7 +20,7 @@
             --mint: #1ABC9C;
             --light: #ECF0F1;
             --dark: #1A252F;
-            --transition: all 0.1s cubic-bezier(0.10, 0.10, 0.10, 0.10);
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         
         body {
@@ -38,11 +38,11 @@
             padding: 40px 20px;
         }
         
-       
+        /* Анимации - УВЕЛИЧИЛ СКОРОСТЬ */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(40px);
+                transform: translateY(20px); /* Уменьшил расстояние */
             }
             to {
                 opacity: 1;
@@ -56,11 +56,11 @@
         }
         
         .fade-in {
-            animation: fadeInUp 1s ease-out forwards;
+            animation: fadeInUp 0.6s ease-out forwards; /* Уменьшил длительность с 1s до 0.6s */
             opacity: 0;
         }
         
-        
+        /* Header с геометрическим паттерном */
         header {
             text-align: center;
             margin-bottom: 80px;
@@ -152,7 +152,7 @@
             50% { border-color: var(--mint); }
         }
         
-        
+        /* Профессиональный профиль */
         .about-section {
             margin: 100px 0;
             padding: 80px 0;
@@ -223,7 +223,7 @@
             color: var(--light);
         }
         
-        
+        /* Навыки в виде модульной сетки */
         .skills-section {
             margin: 100px 0;
             padding: 60px 0;
@@ -321,7 +321,7 @@
             width: 20px;
         }
         
-        
+        /* Проекты в виде карточек с акцентным дизайном */
         .projects-section {
             margin: 100px 0;
             padding: 60px 0;
@@ -498,7 +498,7 @@
 </head>
 <body>
     <div class="container">
-        
+        <!-- Первый блок: Заголовок -->
         <header>
             <div class="header-pattern"></div>
             <div class="profile-container fade-in">
@@ -515,7 +515,7 @@
             </div>
         </header>
         
-        
+        <!-- Второй блок: Профессиональный профиль -->
         <section class="about-section">
             <div class="about-container">
                 <div class="about-text fade-in">
@@ -544,7 +544,7 @@
             </div>
         </section>
         
-        
+        <!-- Третий блок: Профессиональные навыки -->
         <section class="skills-section">
             <h2 class="section-title fade-in">Профессиональные Навыки</h2>
             <div class="skills-grid">
@@ -593,11 +593,11 @@
             </div>
         </section>
         
-        
+        <!-- Четвертый блок: Портфолио проектов -->
         <section class="projects-section">
             <h2 class="section-title fade-in">Портфолио Проектов</h2>
             <div class="projects-grid">
-                <a href="projects/project 1" class="project-card fade-in">
+                <a href="projects/project1" class="project-card fade-in">
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-comments"></i>
@@ -613,7 +613,7 @@
                     </div>
                 </a>
                 
-                <a href="projects/project 2" class="project-card fade-in">
+                <a href="projects/project2" class="project-card fade-in">
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-file-alt"></i>
@@ -629,7 +629,7 @@
                     </div>
                 </a>
                 
-                <a href="projects/project 3" class="project-card fade-in">
+                <a href="projects/project3" class="project-card fade-in">
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-graduation-cap"></i>
@@ -645,7 +645,7 @@
                     </div>
                 </a>
                 
-                <a href="projects/project 5" class="project-card fade-in">
+                <a href="projects/project4" class="project-card fade-in">
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-icons"></i>
@@ -661,7 +661,7 @@
                     </div>
                 </a>
                 
-                <a href="projects/project 7" class="project-card fade-in">
+                <a href="projects/project5" class="project-card fade-in">
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-bolt"></i>
@@ -677,7 +677,7 @@
                     </div>
                 </a>
                 
-                <a href="projects/project 10" class="project-card fade-in">
+                <a href="projects/project6" class="project-card fade-in">
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-shoe-prints"></i>
@@ -693,7 +693,7 @@
                     </div>
                 </a>
                 
-                <a href="projects/project 11" class="project-card fade-in">
+                <a href="projects/project7" class="project-card fade-in">
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-coins"></i>
@@ -711,7 +711,7 @@
                     </div>
                 </a>
                 
-                <a href="projects/project 12" class="project-card fade-in">
+                <a href="projects/project8" class="project-card fade-in">
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-envelope"></i>
@@ -729,7 +729,7 @@
             </div>
         </section>
         
-        
+        <!-- Пятый блок: Свяжитесь со мной (упрощенный) -->
         <footer>
             <h3 class="contact-title fade-in">Свяжитесь со мной</h3>
             <p class="contact-subtitle fade-in">Я открыта для новых проектов и возможностей сотрудничества</p>
@@ -739,7 +739,7 @@
     </div>
 
     <script>
-        
+        // Анимация печатающегося текста
         function typeWriter() {
             const textElement = document.getElementById('typing-text');
             const texts = [
@@ -781,27 +781,32 @@
             type();
         }
         
-        
+        // Анимация появления элементов при скролле - УСКОРИЛ ПОЯВЛЕНИЕ
         function animateOnScroll() {
             const elements = document.querySelectorAll('.fade-in');
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.style.animation = `fadeInUp 1s ease-out ${entry.target.dataset.delay || '0s'} forwards`;
+                        entry.target.style.animation = `fadeInUp 0.6s ease-out ${entry.target.dataset.delay || '0s'} forwards`;
                         observer.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.1 });
+            }, { 
+                threshold: 0.05, // Уменьшил порог срабатывания (элементы появятся раньше)
+                rootMargin: '0px 0px -50px 0px' // Элементы начнут появляться за 50px до их появления в viewport
+            });
             
             elements.forEach((element, index) => {
                 element.style.animation = 'none';
                 element.style.opacity = '0';
-                element.dataset.delay = `${index * 0.1}s`;
+                // Уменьшил задержку между элементами с 0.1s до 0.05s
+                element.dataset.delay = `${index * 0.05}s`;
                 observer.observe(element);
             });
         }
-       
+        
+        // Инициализация
         document.addEventListener('DOMContentLoaded', function() {
             typeWriter();
             animateOnScroll();
