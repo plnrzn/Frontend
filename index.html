@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Портфолио | Полина Рязанцева</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,21 +14,31 @@
         }
         
         :root {
-            --primary: #4a4e69;
-            --secondary: #9a8c98;
-            --accent: #c9ada7;
-            --light: #f2e9e4;
-            --dark: #22223b;
-            --card-bg: rgba(255, 255, 255, 0.1);
-            --transition: all 0.3s ease;
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --accent: #f093fb;
+            --light: #ffffff;
+            --dark: #1a202c;
+            --card-bg: rgba(255, 255, 255, 0.08);
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
         }
         
         body {
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(-45deg, #1a202c, #2d3748, #4a5568, #2d3748);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
             color: var(--light);
             min-height: 100vh;
-            line-height: 1.6;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
         .container {
@@ -36,56 +47,165 @@
             padding: 40px 20px;
         }
         
+        /* Анимация появления элементов */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        /* Заголовок с частицами */
+        .particles-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: float 6s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
         header {
             text-align: center;
-            margin-bottom: 60px;
-            padding: 40px 20px;
+            margin-bottom: 80px;
+            padding: 60px 30px;
             background: var(--card-bg);
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(102,126,234,0.1) 0%, rgba(118,75,162,0) 70%);
+            animation: rotate 20s linear infinite;
+            z-index: -1;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
         
         .profile-img {
-            width: 180px;
-            height: 180px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--accent);
-            margin: 0 auto 25px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+            border: 4px solid transparent;
+            margin: 0 auto 30px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 50%, var(--secondary) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 60px;
+            font-size: 70px;
             color: var(--light);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        
+        .profile-img::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, var(--accent), var(--primary), var(--secondary), var(--accent));
+            background-size: 400% 400%;
+            border-radius: 50%;
+            z-index: -1;
+            animation: gradientRotate 3s ease infinite;
+            opacity: 0.7;
+        }
+        
+        @keyframes gradientRotate {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
         
         h1 {
-            font-size: 3.5em;
-            margin-bottom: 15px;
+            font-size: 4em;
+            margin-bottom: 20px;
             background: linear-gradient(90deg, var(--light) 0%, var(--accent) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: 700;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
         .subtitle {
-            font-size: 1.4em;
+            font-size: 1.5em;
             opacity: 0.9;
             max-width: 700px;
             margin: 0 auto 30px;
             color: var(--accent);
+            font-weight: 300;
+        }
+        
+        .typing-text {
+            font-size: 1.2em;
+            margin: 20px 0;
+            min-height: 1.5em;
+        }
+        
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: var(--accent);
+            margin-left: 2px;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
         
         .section-title {
             text-align: center;
-            margin: 60px 0 40px;
-            font-size: 2.5em;
+            margin: 80px 0 50px;
+            font-size: 2.8em;
             position: relative;
-            padding-bottom: 20px;
+            padding-bottom: 25px;
         }
         
         .section-title::after {
@@ -94,69 +214,96 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
+            width: 120px;
             height: 4px;
-            background: var(--accent);
+            background: var(--gradient);
             border-radius: 2px;
         }
         
         .about-section {
             display: flex;
             gap: 40px;
-            margin-bottom: 60px;
+            margin-bottom: 80px;
             align-items: center;
         }
         
         .about-text {
             flex: 1;
             background: var(--card-bg);
-            border-radius: 20px;
-            padding: 30px;
-            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 40px;
+            backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            transition: var(--transition);
+        }
+        
+        .about-text:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
         }
         
         .about-text h3 {
             color: var(--accent);
-            margin-bottom: 20px;
-            font-size: 1.8em;
+            margin-bottom: 25px;
+            font-size: 2em;
+            font-weight: 600;
         }
         
         .about-text p {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             line-height: 1.8;
+            font-size: 1.1em;
         }
         
         .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 35px;
+            margin-bottom: 80px;
         }
         
         .skill-category {
             background: var(--card-bg);
-            border-radius: 20px;
-            padding: 30px;
-            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 35px;
+            backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: var(--transition);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
         }
         
         .skill-category:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+        }
+        
+        .skill-category:hover::before {
+            transform: scaleX(1);
         }
         
         .skill-category h3 {
-            margin-bottom: 20px;
-            font-size: 1.5em;
+            margin-bottom: 25px;
+            font-size: 1.6em;
             color: var(--accent);
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
         }
         
         .skill-list {
@@ -164,11 +311,17 @@
         }
         
         .skill-list li {
-            padding: 12px 0;
+            padding: 15px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
+            transition: var(--transition);
+        }
+        
+        .skill-list li:hover {
+            transform: translateX(10px);
+            color: var(--accent);
         }
         
         .skill-list li:last-child {
@@ -178,33 +331,33 @@
         .skill-list i {
             color: var(--accent);
             width: 24px;
-            font-size: 1.1em;
+            font-size: 1.2em;
         }
         
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            margin-top: 50px;
         }
         
         .project-card {
             background: var(--card-bg);
-            border-radius: 20px;
-            padding: 30px;
+            border-radius: 24px;
+            padding: 35px;
             transition: var(--transition);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             text-decoration: none;
             color: var(--light);
             display: block;
             position: relative;
             overflow: hidden;
-            min-height: 280px;
+            min-height: 300px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            justify-content: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
         
         .project-card::before {
@@ -214,122 +367,189 @@
             left: 0;
             width: 100%;
             height: 6px;
-            background: var(--accent);
+            background: var(--gradient);
             transform: scaleX(0);
             transition: var(--transition);
         }
         
         .project-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            transform: translateY(-15px) scale(1.02);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
         }
         
         .project-card:hover::before {
             transform: scaleX(1);
         }
         
+        .project-number {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 3em;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.05);
+        }
+        
         .project-icon {
             font-size: 3.5em;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             color: var(--accent);
             text-align: center;
         }
         
         .project-title {
-            font-size: 1.5em;
-            margin-bottom: 15px;
+            font-size: 1.6em;
+            margin-bottom: 20px;
             font-weight: 600;
             text-align: center;
         }
         
         .project-description {
             opacity: 0.9;
-            font-size: 1em;
+            font-size: 1.1em;
             text-align: center;
             line-height: 1.6;
         }
         
-        .project-placeholder {
+        .project-tech {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 200px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
             margin-top: 20px;
-            font-style: italic;
-            opacity: 0.7;
+            justify-content: center;
+        }
+        
+        .tech-tag {
+            background: rgba(240, 147, 251, 0.2);
+            color: var(--accent);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            border: 1px solid rgba(240, 147, 251, 0.3);
+            transition: var(--transition);
+        }
+        
+        .tech-tag:hover {
+            background: rgba(240, 147, 251, 0.3);
+            transform: translateY(-3px);
         }
         
         footer {
             text-align: center;
-            margin-top: 80px;
-            padding: 40px 20px;
+            margin-top: 100px;
+            padding: 60px 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--gradient);
         }
         
         .social-links {
             display: flex;
             justify-content: center;
             gap: 25px;
-            margin: 30px 0;
+            margin: 40px 0;
         }
         
         .social-links a {
             color: var(--light);
             font-size: 1.8em;
             transition: var(--transition);
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             background: var(--card-bg);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
         }
         
         .social-links a:hover {
-            color: var(--accent);
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+        
+        .social-links a:hover::before {
+            opacity: 1;
         }
         
         .contact-btn {
             display: inline-block;
-            padding: 15px 35px;
-            background: var(--accent);
-            color: var(--dark);
+            padding: 18px 45px;
+            background: var(--gradient);
+            color: var(--light);
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1em;
+            font-size: 1.2em;
             transition: var(--transition);
-            margin-top: 20px;
+            margin-top: 30px;
             border: none;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: 0.5s;
         }
         
         .contact-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            background: var(--light);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         }
         
+        .contact-btn:hover::before {
+            left: 100%;
+        }
+        
+        /* Адаптивность */
         @media (max-width: 768px) {
             h1 {
-                font-size: 2.5em;
+                font-size: 2.8em;
             }
             
             .subtitle {
-                font-size: 1.2em;
+                font-size: 1.3em;
             }
             
             .section-title {
-                font-size: 2em;
+                font-size: 2.2em;
             }
             
             .skills-container {
@@ -339,37 +559,73 @@
             .about-section {
                 flex-direction: column;
             }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-img {
+                width: 160px;
+                height: 160px;
+                font-size: 50px;
+            }
+        }
+        
+        /* Параллакс эффект */
+        .parallax {
+            transform-style: preserve-3d;
+        }
+        
+        /* Прогресс-бар для навыков */
+        .skill-bar {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 3px;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 1.5s ease-out;
+        }
+        
+        .skill-category:hover .skill-progress {
+            transform: scaleX(1);
         }
     </style>
 </head>
 <body>
+    <div class="particles-container" id="particles"></div>
+    
     <div class="container">
-        <header>
+        <header class="fade-in">
             <div class="profile-img">
                 <i class="fas fa-user"></i>
             </div>
             <h1>Полина Рязанцева</h1>
             <p class="subtitle">Студентка по специальности "Компьютерный дизайн"</p>
             <p class="subtitle">Специализируюсь на фронтенд-разработке и создании современных цифровых интерфейсов</p>
+            <div class="typing-text" id="typing-text"></div>
         </header>
         
-        <div class="about-section">
+        <div class="about-section fade-in">
             <div class="about-text">
                 <h3>Обо мне</h3>
-                <p>Я обучаюсь по специальности "Компьютерный дизайн" — современному направлению, объединяющему художественное творчество с цифровыми технологиями. В рамках обучения я осваиваю основы композиции, цветоведения и типографики, работу с графическими редакторами (Adobe Photoshop, Illustrator, Figma), создание пользовательских интерфейсов (UI/UX), 3D-моделирование и визуализацию, а также анимацию и создание интерактивных элементов.
-
-Параллельно я активно изучаю фронтенд-разработку, что позволяет мне не только проектировать интерфейсы, но и реализовывать их в коде. Мои технические навыки включают: HTML5 (семантическая разметка, доступность), CSS3 (Flexbox, Grid, адаптивный дизайн), препроцессоры SASS/SCSS для эффективной стилизации, CSS-анимации, JavaScript (ES6+), DOM-манипуляции для создания динамических интерфейсов, а также изучение React для компонентного подхода.
-
-Компьютерный дизайн + фронтенд — это уникальная комбинация, позволяющая проектировать интерфейсы с пониманием технических возможностей, создавать дизайн-системы, которые легко реализовать в коде, эффективно работать в команде с разработчиками и создавать целостные цифровые продукты от идеи до реализации.</p>
-                <p>Моя цель — стать специалистом, который может не только создать красивый дизайн, но и превратить его в работающий, функциональный продукт. Это дает мне конкурентное преимущество на рынке digital-профессий, где ценятся универсальные специалисты, способные охватить весь процесс создания цифрового продукта..</p>
-                <p>В свободное время я изучаю новые технологии в веб-разработке, экспериментирую с дизайном и работаю над личными проектами для расширения своего портфолио.</p>
+                <p>Я обучаюсь по специальности "Компьютерный дизайн" — современному направлению, объединяющему художественное творчество с цифровыми технологиями. В рамках обучения я осваиваю основы композиции, цветоведения и типографики, работу с графическими редакторами (Adobe Photoshop, Illustrator, Figma), создание пользовательских интерфейсов (UI/UX), 3D-моделирование и визуализацию, а также анимацию и создание интерактивных элементов.</p>
+                <p>Параллельно я активно изучаю фронтенд-разработку, что позволяет мне не только проектировать интерфейсы, но и реализовывать их в коде. Мои технические навыки включают: HTML5 (семантическая разметка, доступность), CSS3 (Flexbox, Grid, адаптивный дизайн), препроцессоры SASS/SCSS для эффективной стилизации, CSS-анимации, JavaScript (ES6+), DOM-манипуляции для создания динамических интерфейсов, а также изучение React для компонентного подхода.</p>
+                <p>Компьютерный дизайн + фронтенд — это уникальная комбинация, позволяющая проектировать интерфейсы с пониманием технических возможностей, создавать дизайн-системы, которые легко реализовать в коде, эффективно работать в команде с разработчиками и создавать целостные цифровые продукты от идеи до реализации.</p>
+                <p>Моя цель — стать специалистом, который может не только создать красивый дизайн, но и превратить его в работающий, функциональный продукт. Это дает мне конкурентное преимущество на рынке digital-профессий, где ценятся универсальные специалисты, способные охватить весь процесс создания цифрового продукта.</p>
             </div>
         </div>
         
-        <h2 class="section-title">Мои Навыки Фронтенд-разработка</h2>
+        <h2 class="section-title fade-in">Мои Навыки Фронтенд-разработка</h2>
         <div class="skills-container">
-            
-            <div class="skill-category">
+            <div class="skill-category fade-in">
                 <h3><i class="fas fa-code"></i> HTML & CSS</h3>
                 <ul class="skill-list">
                     <li><i class="fas fa-check"></i> Семантическая верстка HTML5</li>
@@ -381,8 +637,8 @@
                 </ul>
             </div>
             
-            <div class="skill-category">
-                <h3><i class="fas fa-paint-brush"></i>JavaScript</h3>
+            <div class="skill-category fade-in">
+                <h3><i class="fab fa-js-square"></i> JavaScript</h3>
                 <ul class="skill-list">
                     <li><i class="fas fa-check"></i> ES6+ (модули, деструктуризация, стрелочные функции)</li>
                     <li><i class="fas fa-check"></i> Работа с DOM</li>
@@ -392,64 +648,171 @@
                 </ul>
             </div>
             
-            <div class="skill-category">
+            <div class="skill-category fade-in">
                 <h3><i class="fas fa-tools"></i> Фреймворки и библиотеки</h3>
                 <ul class="skill-list">
-                    <li><i class="fas fa-check"></i>React (компоненты, хуки, состояние)</li>
+                    <li><i class="fas fa-check"></i> React (компоненты, хуки, состояние)</li>
                     <li><i class="fas fa-check"></i> Bootstrap 5</li>
                     <li><i class="fas fa-check"></i> jQuery (базовые знания)</li>
                 </ul>
             </div>
         </div>
         
-          <h2 class="section-title">Мои Проекты</h2>
+        <h2 class="section-title fade-in">Мои Проекты</h2>
         <div class="projects-grid">
-            <a href="projects/project 1" class="project-card">
+            <!-- Проект 1 -->
+            <a href="projects/project1" class="project-card fade-in">
+                <div class="project-number">01</div>
+                <div class="project-icon"><i class="fas fa-comments"></i></div>
                 <div class="project-title">Диалог</div>
+                <div class="project-description">Интерактивная система диалогов с анимацией</div>
+                <div class="project-tech">
+                    <span class="tech-tag">HTML5</span>
+                    <span class="tech-tag">CSS3</span>
+                    <span class="tech-tag">JavaScript</span>
+                </div>
             </a>
             
-            <a href="projects/project 2" class="project-card">
+            <!-- Проект 2 -->
+            <a href="projects/project2" class="project-card fade-in">
+                <div class="project-number">02</div>
+                <div class="project-icon"><i class="fas fa-clipboard-list"></i></div>
                 <div class="project-title">Анкета</div>
+                <div class="project-description">Адаптивная форма с валидацией данных</div>
+                <div class="project-tech">
+                    <span class="tech-tag">HTML5</span>
+                    <span class="tech-tag">CSS3</span>
+                    <span class="tech-tag">JavaScript</span>
+                </div>
             </a>
             
-            <a href="projects/project 3" class="project-card">
+            <!-- Проект 3 -->
+            <a href="projects/project3" class="project-card fade-in">
+                <div class="project-number">03</div>
+                <div class="project-icon"><i class="fas fa-graduation-cap"></i></div>
                 <div class="project-title">Пример учебного плана</div>
+                <div class="project-description">Визуализация учебного процесса с интерактивными элементами</div>
+                <div class="project-tech">
+                    <span class="tech-tag">HTML5</span>
+                    <span class="tech-tag">CSS3</span>
+                    <span class="tech-tag">JavaScript</span>
+                </div>
             </a>
             
-            <a href="projects/project 4" class="project-card">
+            <!-- Проект 4 -->
+            <a href="projects/project4" class="project-card fade-in">
+                <div class="project-number">04</div>
+                <div class="project-icon"><i class="fas fa-align-right"></i></div>
                 <div class="project-title">Float right</div>
+                <div class="project-description">Макет с использованием float-элементов</div>
+                <div class="project-tech">
+                    <span class="tech-tag">HTML5</span>
+                    <span class="tech-tag">CSS3</span>
+                </div>
             </a>
             
-            <a href="projects/project 5" class="project-card">
+            <!-- Проект 5 -->
+            <a href="projects/project5" class="project-card fade-in">
+                <div class="project-number">05</div>
+                <div class="project-icon"><i class="fas fa-star"></i></div>
                 <div class="project-title">Фавикон</div>
+                <div class="project-description">Дизайн и реализация фавиконов для веб-сайтов</div>
+                <div class="project-tech">
+                    <span class="tech-tag">Figma</span>
+                    <span class="tech-tag">Illustrator</span>
+                </div>
             </a>
             
-            <a href="projects/project 6" class="project-card">
+            <!-- Проект 6 -->
+            <a href="projects/project6" class="project-card fade-in">
+                <div class="project-number">06</div>
+                <div class="project-icon"><i class="fas fa-palette"></i></div>
                 <div class="project-title">Beauty</div>
+                <div class="project-description">Эстетичный дизайн с акцентом на визуальную привлекательность</div>
+                <div class="project-tech">
+                    <span class="tech-tag">UI/UX</span>
+                    <span class="tech-tag">Figma</span>
+                </div>
             </a>
             
-            <a href="projects/project 7" class="project-card">
+            <!-- Проект 7 -->
+            <a href="projects/project7" class="project-card fade-in">
+                <div class="project-number">07</div>
+                <div class="project-icon"><i class="fas fa-plane"></i></div>
                 <div class="project-title">Avion</div>
+                <div class="project-description">Авиационный лендинг с современным дизайном</div>
+                <div class="project-tech">
+                    <span class="tech-tag">HTML5</span>
+                    <span class="tech-tag">CSS3</span>
+                    <span class="tech-tag">JavaScript</span>
+                </div>
             </a>
             
-            <a href="projects/project 8" class="project-card">
+            <!-- Проект 8 -->
+            <a href="projects/project8" class="project-card fade-in">
+                <div class="project-number">08</div>
+                <div class="project-icon"><i class="fas fa-bolt"></i></div>
                 <div class="project-title">FAST & EASY</div>
+                <div class="project-description">Оптимизированный интерфейс для быстрого взаимодействия</div>
+                <div class="project-tech">
+                    <span class="tech-tag">UI/UX</span>
+                    <span class="tech-tag">Figma</span>
+                </div>
             </a>
-            <a href="projects/project 9" class="project-card">
+            
+            <!-- Проект 9 -->
+            <a href="projects/project9" class="project-card fade-in">
+                <div class="project-number">09</div>
+                <div class="project-icon"><i class="fas fa-running"></i></div>
                 <div class="project-title">Nike</div>
+                <div class="project-description">Редизайн страницы бренда с современными элементами</div>
+                <div class="project-tech">
+                    <span class="tech-tag">HTML5</span>
+                    <span class="tech-tag">CSS3</span>
+                    <span class="tech-tag">JavaScript</span>
+                </div>
             </a>
-            <a href="projects/project 10" class="project-card">
+            
+            <!-- Проект 10 -->
+            <a href="projects/project10" class="project-card fade-in">
+                <div class="project-number">10</div>
+                <div class="project-icon"><i class="fas fa-briefcase"></i></div>
                 <div class="project-title">Portfolio</div>
+                <div class="project-description">Современное портфолио с анимациями и интерактивностью</div>
+                <div class="project-tech">
+                    <span class="tech-tag">HTML5</span>
+                    <span class="tech-tag">CSS3</span>
+                    <span class="tech-tag">JavaScript</span>
+                </div>
             </a>
-            <a href="projects/project 11" class="project-card">
+            
+            <!-- Проект 11 -->
+            <a href="projects/project11" class="project-card fade-in">
+                <div class="project-number">11</div>
+                <div class="project-icon"><i class="fas fa-coins"></i></div>
                 <div class="project-title">Nft - market</div>
+                <div class="project-description">Маркетплейс для NFT с современным UI</div>
+                <div class="project-tech">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">CSS3</span>
+                    <span class="tech-tag">JavaScript</span>
+                </div>
             </a>
-            <a href="projects/project 12" class="project-card">
+            
+            <!-- Проект 12 -->
+            <a href="projects/project12" class="project-card fade-in">
+                <div class="project-number">12</div>
+                <div class="project-icon"><i class="fas fa-envelope"></i></div>
                 <div class="project-title">Email</div>
+                <div class="project-description">Адаптивный email-шаблон с современным дизайном</div>
+                <div class="project-tech">
+                    <span class="tech-tag">HTML</span>
+                    <span class="tech-tag">CSS</span>
+                </div>
             </a>
-        
         </div>
-        <footer>
+        
+        <footer class="fade-in">
             <h3>Свяжитесь со мной</h3>
             <p>Я открыта для новых проектов и возможностей сотрудничества</p>
             <div class="social-links">
@@ -462,5 +825,101 @@
             <p style="margin-top: 40px;">© 2025 Полина Рязанцева. Все права защищены.</p>
         </footer>
     </div>
+
+    <script>
+        // Создание частиц
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Случайные позиции и размеры
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.width = `${Math.random() * 6 + 2}px`;
+                particle.style.height = particle.style.width;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                particle.style.opacity = Math.random() * 0.6 + 0.2;
+                
+                container.appendChild(particle);
+            }
+        }
+        
+        // Анимация печатающегося текста
+        function typeWriter() {
+            const textElement = document.getElementById('typing-text');
+            const texts = [
+                "Создаю современные цифровые интерфейсы",
+                "Разрабатываю адаптивные веб-приложения", 
+                "Дизайнирую удобные пользовательские опыты",
+                "Превращаю идеи в работающий код"
+            ];
+            let textIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let typingSpeed = 100;
+            
+            function type() {
+                const currentText = texts[textIndex];
+                
+                if (isDeleting) {
+                    textElement.textContent = currentText.substring(0, charIndex - 1);
+                    charIndex--;
+                    typingSpeed = 50;
+                } else {
+                    textElement.textContent = currentText.substring(0, charIndex + 1);
+                    charIndex++;
+                    typingSpeed = 100;
+                }
+                
+                if (!isDeleting && charIndex === currentText.length) {
+                    isDeleting = true;
+                    typingSpeed = 1000;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    textIndex = (textIndex + 1) % texts.length;
+                    typingSpeed = 500;
+                }
+                
+                setTimeout(type, typingSpeed);
+            }
+            
+            // Добавляем курсор
+            const cursor = document.createElement('span');
+            cursor.classList.add('cursor');
+            textElement.appendChild(cursor);
+            
+            type();
+        }
+        
+        // Анимация появления элементов при скролле
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            elements.forEach(element => {
+                element.style.animationPlayState = 'paused';
+                observer.observe(element);
+            });
+        }
+        
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            typeWriter();
+            animateOnScroll();
+        });
+    </script>
 </body>
 </html>
