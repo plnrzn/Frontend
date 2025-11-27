@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Портфолио | Полина Рязанцева</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,42 +14,31 @@
         }
         
         :root {
-            --primary: #8B5FBF;
-            --secondary: #6D28D9;
-            --accent: #C084FC;
-            --dark: #1E1B2E;
-            --darker: #151321;
-            --light: #FFFFFF;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            --gradient-accent: linear-gradient(135deg, var(--accent) 0%, #A855F7 100%);
+            --primary: #2C3E50;
+            --secondary: #34495E;
+            --accent: #9B59B6;
+            --mint: #1ABC9C;
+            --light: #ECF0F1;
+            --dark: #1A252F;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(-45deg, var(--darker), var(--dark), #2D1B69, var(--darker));
-            background-size: 400% 400%;
-            animation: gradientShift 20s ease infinite;
+            background: linear-gradient(135deg, #1A252F 0%, #2C3E50 50%, #34495E 100%);
             color: var(--light);
             min-height: 100vh;
             line-height: 1.7;
             overflow-x: hidden;
         }
         
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 40px 20px;
         }
         
-        /* Анимация появления элементов */
+        /* Анимации */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -61,177 +50,194 @@
             }
         }
         
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
         .fade-in {
             animation: fadeInUp 1s ease-out forwards;
             opacity: 0;
         }
         
-        /* Неоновые частицы */
-        .particles-container {
-            position: fixed;
+        /* Header с геометрическим паттерном */
+        header {
+            text-align: center;
+            margin-bottom: 80px;
+            padding: 100px 40px;
+            position: relative;
+            background: rgba(26, 37, 47, 0.9);
+            border-bottom: 3px solid var(--mint);
+        }
+        
+        .header-pattern {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
-            z-index: -1;
+            background: 
+                linear-gradient(45deg, transparent 49%, rgba(26, 188, 156, 0.1) 50%, transparent 51%),
+                linear-gradient(-45deg, transparent 49%, rgba(26, 188, 156, 0.1) 50%, transparent 51%);
+            background-size: 50px 50px;
+            opacity: 0.3;
         }
         
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            animation: floatNeon 8s infinite ease-in-out;
-            filter: blur(1px);
-        }
-        
-        @keyframes floatNeon {
-            0%, 100% { 
-                transform: translateY(0) rotate(0deg) scale(1); 
-                box-shadow: 0 0 10px currentColor;
-            }
-            33% { 
-                transform: translateY(-40px) rotate(120deg) scale(1.2); 
-                box-shadow: 0 0 20px currentColor;
-            }
-            66% { 
-                transform: translateY(20px) rotate(240deg) scale(0.8); 
-                box-shadow: 0 0 15px currentColor;
-            }
-        }
-        
-        /* Главный заголовок с неоновым эффектом */
-        header {
-            text-align: center;
-            margin-bottom: 80px;
-            padding: 80px 40px;
-            background: rgba(30, 27, 46, 0.7);
-            border-radius: 30px;
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(139, 95, 191, 0.3);
+        .profile-container {
             position: relative;
-            overflow: hidden;
-            box-shadow: 
-                0 0 50px rgba(139, 95, 191, 0.2),
-                inset 0 0 50px rgba(139, 95, 191, 0.1);
+            display: inline-block;
+            margin-bottom: 40px;
         }
         
-        header::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: var(--gradient);
-            border-radius: 32px;
-            z-index: -1;
-            opacity: 0.7;
-            animation: neonPulse 4s ease-in-out infinite;
-        }
-        
-        @keyframes neonPulse {
-            0%, 100% { 
-                opacity: 0.5;
-                filter: blur(10px);
-            }
-            50% { 
-                opacity: 0.8;
-                filter: blur(5px);
-            }
+        .profile-frame {
+            width: 200px;
+            height: 200px;
+            border: 3px solid var(--mint);
+            border-radius: 50%;
+            padding: 10px;
+            position: relative;
+            background: var(--secondary);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
         
         .profile-img {
-            width: 180px;
-            height: 180px;
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid transparent;
-            margin: 0 auto 30px;
-            background: var(--gradient);
+            background: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 60px;
-            color: var(--light);
+            color: var(--mint);
             position: relative;
             overflow: hidden;
-            transition: var(--transition);
-            box-shadow: 
-                0 0 30px var(--accent),
-                inset 0 0 20px rgba(255, 255, 255, 0.1);
-        }
-        
-        .profile-img::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            background: conic-gradient(from 0deg, var(--primary), var(--accent), var(--secondary), var(--primary));
-            border-radius: 50%;
-            z-index: -1;
-            animation: rotate 3s linear infinite;
-        }
-        
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
         }
         
         h1 {
-            font-size: 4.5em;
+            font-family: 'Playfair Display', serif;
+            font-size: 4em;
             margin-bottom: 20px;
-            background: linear-gradient(90deg, var(--light), var(--accent), var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 700;
-            text-shadow: 0 0 30px rgba(192, 132, 252, 0.5);
-            animation: textGlow 3s ease-in-out infinite alternate;
+            color: var(--light);
+            font-weight: 600;
+            letter-spacing: 2px;
         }
         
-        @keyframes textGlow {
-            from { text-shadow: 0 0 20px rgba(192, 132, 252, 0.5); }
-            to { text-shadow: 0 0 30px rgba(192, 132, 252, 0.8), 0 0 40px rgba(139, 95, 191, 0.6); }
-        }
-        
-        .subtitle {
-            font-size: 1.6em;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            color: var(--accent);
+        .title {
+            font-size: 1.4em;
+            color: var(--mint);
+            margin-bottom: 30px;
             font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        .typing-container {
+            margin: 40px 0;
+            min-height: 60px;
         }
         
         .typing-text {
-            font-size: 1.4em;
-            margin: 30px 0;
-            min-height: 1.5em;
-            color: var(--accent);
-            font-weight: 300;
-        }
-        
-        .cursor {
+            font-size: 1.3em;
             display: inline-block;
-            width: 3px;
-            background-color: var(--accent);
-            margin-left: 2px;
-            animation: blink 1s infinite;
-            box-shadow: 0 0 10px var(--accent);
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid var(--mint);
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+            color: var(--light);
         }
         
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--mint); }
+        }
+        
+        /* Профессиональный профиль */
+        .about-section {
+            margin: 100px 0;
+            padding: 80px 0;
+            background: rgba(26, 37, 47, 0.8);
+        }
+        
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: var(--light);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .about-text h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: var(--mint);
+        }
+        
+        .about-text p {
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+        
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 30px;
+            background: rgba(44, 62, 80, 0.9);
+            border-top: 3px solid var(--mint);
+            transition: var(--transition);
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: var(--mint);
+            margin-bottom: 10px;
+        }
+        
+        .stat-text {
+            font-size: 1.1em;
+            color: var(--light);
+        }
+        
+        /* Навыки в виде модульной сетки */
+        .skills-section {
+            margin: 100px 0;
+            padding: 60px 0;
+            position: relative;
         }
         
         .section-title {
             text-align: center;
-            margin: 100px 0 60px;
-            font-size: 3.2em;
+            margin-bottom: 60px;
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            color: var(--light);
             position: relative;
-            padding-bottom: 30px;
+            padding-bottom: 20px;
         }
         
         .section-title::after {
@@ -240,140 +246,58 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 200px;
-            height: 4px;
-            background: var(--gradient);
-            border-radius: 2px;
-            box-shadow: 0 0 20px var(--primary);
+            width: 100px;
+            height: 3px;
+            background: var(--mint);
         }
         
-        /* Блок "Обо мне" с волнообразной анимацией */
-        .about-section {
-            display: flex;
-            gap: 50px;
-            margin-bottom: 100px;
-            align-items: center;
-            position: relative;
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
-        .about-text {
-            flex: 1;
-            background: rgba(30, 27, 46, 0.7);
-            border-radius: 25px;
-            padding: 50px;
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(139, 95, 191, 0.3);
-            position: relative;
-            box-shadow: 
-                0 0 40px rgba(139, 95, 191, 0.2),
-                inset 0 0 40px rgba(139, 95, 191, 0.1);
+        .skill-card {
+            background: rgba(44, 62, 80, 0.9);
+            padding: 40px 30px;
+            border-left: 4px solid var(--mint);
             transition: var(--transition);
+            position: relative;
             overflow: hidden;
         }
         
-        .about-text::before {
+        .skill-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(192, 132, 252, 0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(26, 188, 156, 0.1), transparent);
             transition: var(--transition);
         }
         
-        .about-text:hover::before {
+        .skill-card:hover::before {
             left: 100%;
         }
         
-        .about-text:hover {
+        .skill-card:hover {
             transform: translateY(-10px);
-            box-shadow: 
-                0 0 60px rgba(139, 95, 191, 0.3),
-                inset 0 0 40px rgba(139, 95, 191, 0.15);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
         
-        .about-text h3 {
-            color: var(--accent);
-            margin-bottom: 30px;
-            font-size: 2.2em;
-            font-weight: 600;
-            text-shadow: 0 0 20px rgba(192, 132, 252, 0.5);
+        .skill-icon {
+            font-size: 2.5em;
+            color: var(--mint);
+            margin-bottom: 20px;
         }
         
-        .about-text p {
-            margin-bottom: 25px;
-            line-height: 1.8;
-            font-size: 1.1em;
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* Блок навыков с 3D эффектом */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 40px;
-            margin-bottom: 100px;
-            perspective: 1000px;
-        }
-        
-        .skill-category {
-            background: rgba(30, 27, 46, 0.7);
-            border-radius: 25px;
-            padding: 40px;
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(139, 95, 191, 0.3);
-            transition: var(--transition);
-            box-shadow: 
-                0 0 30px rgba(139, 95, 191, 0.2),
-                inset 0 0 30px rgba(139, 95, 191, 0.1);
-            position: relative;
-            overflow: hidden;
-            transform-style: preserve-3d;
-        }
-        
-        .skill-category::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient);
-            opacity: 0;
-            transition: var(--transition);
-            z-index: -1;
-        }
-        
-        .skill-category:hover {
-            transform: translateY(-15px) rotateX(5deg);
-            box-shadow: 
-                0 20px 50px rgba(139, 95, 191, 0.4),
-                inset 0 0 40px rgba(139, 95, 191, 0.2);
-        }
-        
-        .skill-category:hover::before {
-            opacity: 0.1;
-        }
-        
-        .skill-category h3 {
-            margin-bottom: 30px;
-            font-size: 1.8em;
-            color: var(--accent);
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            text-shadow: 0 0 15px rgba(192, 132, 252, 0.5);
-        }
-        
-        .skill-category h3 i {
-            animation: iconFloat 3s ease-in-out infinite;
-        }
-        
-        @keyframes iconFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(5deg); }
+        .skill-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: var(--light);
         }
         
         .skill-list {
@@ -381,36 +305,11 @@
         }
         
         .skill-list li {
-            padding: 18px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(236, 240, 241, 0.1);
             display: flex;
             align-items: center;
-            gap: 15px;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .skill-list li::before {
-            content: '';
-            position: absolute;
-            left: -100%;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-accent);
-            opacity: 0.1;
-            transition: var(--transition);
-            z-index: -1;
-        }
-        
-        .skill-list li:hover {
-            transform: translateX(15px);
-            color: var(--accent);
-        }
-        
-        .skill-list li:hover::before {
-            left: 0;
+            gap: 10px;
         }
         
         .skill-list li:last-child {
@@ -418,461 +317,425 @@
         }
         
         .skill-list i {
-            color: var(--primary);
-            width: 24px;
-            font-size: 1.2em;
-            transition: var(--transition);
+            color: var(--mint);
+            width: 20px;
         }
         
-        .skill-list li:hover i {
-            color: var(--accent);
-            transform: scale(1.3) rotate(15deg);
-            filter: drop-shadow(0 0 8px var(--accent));
+        /* Проекты в виде карточек с акцентным дизайном */
+        .projects-section {
+            margin: 100px 0;
+            padding: 60px 0;
+            background: rgba(26, 37, 47, 0.8);
         }
         
-        /* Блок проектов - минималистичный */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 35px;
-            margin-top: 60px;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
         .project-card {
-            background: rgba(30, 27, 46, 0.7);
-            border-radius: 20px;
-            padding: 40px;
-            transition: var(--transition);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(139, 95, 191, 0.3);
-            text-decoration: none;
-            color: var(--light);
-            display: block;
-            position: relative;
+            background: rgba(26, 37, 47, 0.9);
+            border-radius: 5px;
             overflow: hidden;
-            min-height: 320px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            box-shadow: 
-                0 0 30px rgba(139, 95, 191, 0.2),
-                inset 0 0 30px rgba(139, 95, 191, 0.1);
+            transition: var(--transition);
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
         
         .project-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent);
-            box-shadow: 
-                0 0 50px rgba(139, 95, 191, 0.3),
-                inset 0 0 40px rgba(139, 95, 191, 0.15);
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
         
-        .project-number {
-            position: absolute;
-            top: 25px;
-            right: 25px;
-            font-size: 3.5em;
-            font-weight: 700;
-            color: rgba(255, 255, 255, 0.03);
+        .project-header {
+            background: var(--primary);
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border-bottom: 2px solid var(--mint);
         }
         
         .project-icon {
-            font-size: 4em;
-            margin-bottom: 30px;
-            color: var(--accent);
-            text-align: center;
-            transition: var(--transition);
-            filter: drop-shadow(0 0 10px var(--accent));
+            font-size: 2.5em;
+            color: var(--mint);
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(26, 188, 156, 0.1);
+            border-radius: 50%;
         }
         
         .project-title {
-            font-size: 1.7em;
-            margin-bottom: 20px;
-            font-weight: 600;
-            text-align: center;
+            font-size: 1.4em;
             color: var(--light);
+            font-weight: 600;
+        }
+        
+        .project-body {
+            padding: 30px;
         }
         
         .project-description {
-            opacity: 0.9;
-            font-size: 1.1em;
-            text-align: center;
+            margin-bottom: 25px;
+            color: var(--light);
             line-height: 1.6;
-            color: var(--accent);
         }
         
         .project-tech {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            margin-top: 25px;
-            justify-content: center;
         }
         
         .tech-tag {
-            background: rgba(192, 132, 252, 0.15);
+            background: rgba(155, 89, 182, 0.1);
             color: var(--accent);
-            padding: 10px 18px;
-            border-radius: 25px;
+            padding: 8px 15px;
+            border-radius: 3px;
             font-size: 0.9em;
-            border: 1px solid rgba(192, 132, 252, 0.3);
-            transition: var(--transition);
-            backdrop-filter: blur(10px);
+            border: 1px solid rgba(155, 89, 182, 0.3);
         }
         
-        .tech-tag:hover {
-            background: rgba(192, 132, 252, 0.25);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(192, 132, 252, 0.2);
-        }
-        
-        /* Футер с анимированным градиентом */
+        /* Футер с контактами - упрощенный */
         footer {
+            background: var(--dark);
+            padding: 80px 0 40px;
             text-align: center;
-            margin-top: 120px;
-            padding: 70px 20px;
-            position: relative;
-            overflow: hidden;
+            border-top: 3px solid var(--mint);
         }
         
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: var(--gradient);
-            animation: scanLine 3s linear infinite;
-        }
-        
-        @keyframes scanLine {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin: 50px 0;
-        }
-        
-        .social-links a {
+        .contact-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            margin-bottom: 20px;
             color: var(--light);
-            font-size: 1.8em;
-            transition: var(--transition);
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(30, 27, 46, 0.7);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(139, 95, 191, 0.3);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(139, 95, 191, 0.2);
         }
         
-        .social-links a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient);
-            opacity: 0;
-            transition: var(--transition);
-            z-index: -1;
-        }
-        
-        .social-links a:hover {
+        .contact-subtitle {
+            font-size: 1.2em;
+            margin-bottom: 50px;
             color: var(--light);
-            transform: translateY(-8px) scale(1.1);
-            box-shadow: 0 0 30px var(--primary);
-        }
-        
-        .social-links a:hover::before {
-            opacity: 1;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .contact-btn {
             display: inline-block;
-            padding: 20px 50px;
-            background: var(--gradient);
-            color: var(--light);
-            border-radius: 50px;
+            padding: 15px 40px;
+            background: transparent;
+            color: var(--mint);
+            border: 2px solid var(--mint);
+            border-radius: 3px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.2em;
+            font-size: 1.1em;
             transition: var(--transition);
             margin-top: 30px;
-            border: none;
-            cursor: pointer;
-            box-shadow: 
-                0 0 30px rgba(139, 95, 191, 0.4),
-                inset 0 0 20px rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .contact-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: 0.5s;
+            letter-spacing: 1px;
         }
         
         .contact-btn:hover {
+            background: var(--mint);
+            color: var(--dark);
             transform: translateY(-5px);
-            box-shadow: 
-                0 0 40px rgba(139, 95, 191, 0.6),
-                inset 0 0 20px rgba(255, 255, 255, 0.2);
         }
         
-        .contact-btn:hover::before {
-            left: 100%;
+        .copyright {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(236, 240, 241, 0.1);
+            color: rgba(236, 240, 241, 0.7);
         }
         
         /* Адаптивность */
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+            
             h1 {
                 font-size: 3em;
             }
+        }
+        
+        @media (max-width: 768px) {
+            .skills-grid, .projects-grid {
+                grid-template-columns: 1fr;
+            }
             
-            .subtitle {
-                font-size: 1.3em;
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.5em;
             }
             
             .section-title {
                 font-size: 2.5em;
             }
             
-            .skills-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .about-section {
-                flex-direction: column;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
+            .profile-frame {
+                width: 150px;
+                height: 150px;
             }
             
             .profile-img {
-                width: 150px;
-                height: 150px;
-                font-size: 50px;
-            }
-            
-            header {
-                padding: 50px 20px;
+                font-size: 40px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="particles-container" id="particles"></div>
-    
     <div class="container">
-        <header class="fade-in">
-            <div class="profile-img">
-                <i class="fas fa-user"></i>
+        <!-- Первый блок: Заголовок -->
+        <header>
+            <div class="header-pattern"></div>
+            <div class="profile-container fade-in">
+                <div class="profile-frame">
+                    <div class="profile-img">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                </div>
             </div>
-            <h1>Полина Рязанцева</h1>
-            <p class="subtitle">Фронтенд-разработчик & Компьютерный дизайнер</p>
-            <p class="subtitle">Создаю цифровые продукты на стыке дизайна и технологий</p>
-            <div class="typing-text" id="typing-text"></div>
+            <h1 class="fade-in">Полина Рязанцева</h1>
+            <p class="title fade-in">Фронтенд-разработчик & Компьютерный дизайнер</p>
+            <div class="typing-container fade-in">
+                <div class="typing-text" id="typing-text"></div>
+            </div>
         </header>
         
-        <div class="about-section fade-in">
-            <div class="about-text">
-                <h3>Обо мне</h3>
-                <p>Я обучаюсь по специальности "Компьютерный дизайн" — современному направлению, объединяющему художественное творчество с цифровыми технологиями. В рамках обучения я осваиваю основы композиции, цветоведения и типографики, работу с графическими редакторами (Adobe Photoshop, Illustrator, Figma), создание пользовательских интерфейсов (UI/UX), 3D-моделирование и визуализацию, а также анимацию и создание интерактивных элементов.</p>
-                <p>Параллельно я активно изучаю фронтенд-разработку, что позволяет мне не только проектировать интерфейсы, но и реализовывать их в коде. Мои технические навыки включают: HTML5 (семантическая разметка, доступность), CSS3 (Flexbox, Grid, адаптивный дизайн), препроцессоры SASS/SCSS для эффективной стилизации, CSS-анимации, JavaScript (ES6+), DOM-манипуляции для создания динамических интерфейсов, а также изучение React для компонентного подхода.</p>
-                <p>Компьютерный дизайн + фронтенд — это уникальная комбинация, позволяющая проектировать интерфейсы с пониманием технических возможностей, создавать дизайн-системы, которые легко реализовать в коде, эффективно работать в команде с разработчиками и создавать целостные цифровые продукты от идеи до реализации.</p>
+        <!-- Второй блок: Профессиональный профиль -->
+        <section class="about-section">
+            <div class="about-container">
+                <div class="about-text fade-in">
+                    <h3>Профессиональный профиль</h3>
+                    <p>Я обучаюсь по специальности "Компьютерный дизайн" — современному направлению, объединяющему художественное творчество с цифровыми технологиями. В рамках обучения я осваиваю основы композиции, цветоведения и типографики, работу с графическими редакторами (Adobe Photoshop, Illustrator, Figma), создание пользовательских интерфейсов (UI/UX), 3D-моделирование и визуализацию, а также анимацию и создание интерактивных элементов.</p>
+                    <p>Параллельно я активно изучаю фронтенд-разработку, что позволяет мне не только проектировать интерфейсы, но и реализовывать их в коде. Мои технические навыки включают: HTML5 (семантическая разметка, доступность), CSS3 (Flexbox, Grid, адаптивный дизайн), препроцессоры SASS/SCSS для эффективной стилизации, CSS-анимации, JavaScript (ES6+), DOM-манипуляции для создания динамических интерфейсов, а также изучение React для компонентного подхода.</p>
+                </div>
+                <div class="about-stats fade-in">
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-text">Завершенных проектов</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">8</div>
+                        <div class="stat-text">Технологий освоено</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">2</div>
+                        <div class="stat-text">Года обучения</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-text">Соблюдение сроков</div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
         
-        <h2 class="section-title fade-in">Мои Навыки</h2>
-        <div class="skills-container">
-            <div class="skill-category fade-in">
-                <h3><i class="fas fa-laptop-code"></i> Веб-разработка</h3>
-                <ul class="skill-list">
-                    <li><i class="fas fa-rocket"></i> Семантическая верстка HTML5</li>
-                    <li><i class="fas fa-mobile-alt"></i> Адаптивный дизайн (Mobile First)</li>
-                    <li><i class="fas fa-th-large"></i> CSS3: Flexbox, Grid, анимации</li>
-                    <li><i class="fas fa-magic"></i> Препроцессоры SASS/SCSS</li>
-                    <li><i class="fas fa-sitemap"></i> Методология БЭМ</li>
-                    <li><i class="fas fa-globe"></i> Кроссбраузерная верстка</li>
-                </ul>
+        <!-- Третий блок: Профессиональные навыки -->
+        <section class="skills-section">
+            <h2 class="section-title fade-in">Профессиональные Навыки</h2>
+            <div class="skills-grid">
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Веб-разработка</h3>
+                    <ul class="skill-list">
+                        <li><i class="fab fa-html5"></i> Семантическая верстка HTML5</li>
+                        <li><i class="fas fa-mobile-alt"></i> Адаптивный дизайн (Mobile First)</li>
+                        <li><i class="fab fa-css3-alt"></i> CSS3: Flexbox, Grid, анимации</li>
+                        <li><i class="fab fa-sass"></i> Препроцессоры SASS/SCSS</li>
+                        <li><i class="fas fa-cubes"></i> Методология БЭМ</li>
+                        <li><i class="fas fa-window-restore"></i> Кроссбраузерная верстка</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Программирование</h3>
+                    <ul class="skill-list">
+                        <li><i class="fab fa-js-square"></i> ES6+ (модули, деструктуризация)</li>
+                        <li><i class="fas fa-window-maximize"></i> Работа с DOM</li>
+                        <li><i class="fas fa-sync-alt"></i> События и асинхронность</li>
+                        <li><i class="fas fa-cloud-download-alt"></i> Fetch API, REST</li>
+                        <li><i class="fas fa-project-diagram"></i> Основы ООП и функционального программирования</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Инструменты и фреймворки</h3>
+                    <ul class="skill-list">
+                        <li><i class="fab fa-react"></i> React (компоненты, хуки, состояние)</li>
+                        <li><i class="fab fa-bootstrap"></i> Bootstrap 5</li>
+                        <li><i class="fas fa-code"></i> jQuery (базовые знания)</li>
+                        <li><i class="fab fa-git-alt"></i> Git и системы контроля версий</li>
+                        <li><i class="fab fa-figma"></i> Figma для прототипирования</li>
+                    </ul>
+                </div>
             </div>
-            
-            <div class="skill-category fade-in">
-                <h3><i class="fab fa-js-square"></i> Программирование</h3>
-                <ul class="skill-list">
-                    <li><i class="fas fa-bolt"></i> ES6+ (модули, деструктуризация, стрелочные функции)</li>
-                    <li><i class="fas fa-code"></i> Работа с DOM</li>
-                    <li><i class="fas fa-sync-alt"></i> События и асинхронность</li>
-                    <li><i class="fas fa-database"></i> Fetch API, REST</li>
-                    <li><i class="fas fa-cogs"></i> Основы ООП и функционального программирования</li>
-                </ul>
-            </div>
-            
-            <div class="skill-category fade-in">
-                <h3><i class="fas fa-tools"></i> Инструменты и фреймворки</h3>
-                <ul class="skill-list">
-                    <li><i class="fas fa-atom"></i> React (компоненты, хуки, состояние)</li>
-                    <li><i class="fas fa-puzzle-piece"></i> Bootstrap 5</li>
-                    <li><i class="fas fa-wrench"></i> jQuery (базовые знания)</li>
-                    <li><i class="fas fa-code-branch"></i> Git и системы контроля версий</li>
-                    <li><i class="fas fa-paint-brush"></i> Figma для прототипирования</li>
-                </ul>
-            </div>
-        </div>
+        </section>
         
-        <h2 class="section-title fade-in">Мои Проекты</h2>
-        <div class="projects-grid">
-            <!-- Проекты остаются без изменений -->
-            <a href="projects/project 1" class="project-card fade-in">
-                <div class="project-number">01</div>
-                <div class="project-icon"><i class="fas fa-comments"></i></div>
-                <div class="project-title">Диалог</div>
-                <div class="project-description">Интерактивная система диалогов </div>
-                <div class="project-tech">
-                    <span class="tech-tag">HTML5</span>
-                    <span class="tech-tag">CSS3</span>
+        <!-- Четвертый блок: Портфолио проектов -->
+        <section class="projects-section">
+            <h2 class="section-title fade-in">Портфолио Проектов</h2>
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="project-title">Диалог</div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">Интерактивная система диалогов с современным интерфейсом</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                        </div>
+                    </div>
                 </div>
-            </a>
-            
-            <a href="projects/project 2" class="project-card fade-in">
-                <div class="project-number">02</div>
-                <div class="project-icon"><i class="fas fa-clipboard-list"></i></div>
-                <div class="project-title">Анкета</div>
-                <div class="project-description">Адаптивная форма с валидацией данных</div>
-                <div class="project-tech">
-                    <span class="tech-tag">HTML5</span>
-                    <span class="tech-tag">CSS3</span>
+                
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="project-title">Анкета</div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">Адаптивная форма с валидацией данных и UX-ориентированным дизайном</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                        </div>
+                    </div>
                 </div>
-            </a>
-             <a href="projects/project 3" class="project-card fade-in">
-                <div class="project-number">02</div>
-                <div class="project-icon"><i class="fas fa-clipboard-list"></i></div>
-                <div class="project-title">Пример учебного плана</div>
-                <div class="project-description">Визуализация учебного процесса с интерактивными элементами </div>
-                <div class="project-tech">
-                    <span class="tech-tag">HTML5</span>
-                    <span class="tech-tag">CSS3</span>
+                
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="project-title">Учебный план</div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">Визуализация учебного процесса с интерактивными элементами</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                        </div>
+                    </div>
                 </div>
-            </a> <a href="projects/project 5" class="project-card fade-in">
-                <div class="project-number">02</div>
-                <div class="project-icon"><i class="fas fa-clipboard-list"></i></div>
-                <div class="project-title">Фавикон</div>
-                <div class="project-description">Дизайн и реализация фавиконов для веб-сайтов</div>
-                <div class="project-tech">
-                    <span class="tech-tag">HTML5</span>
-                    <span class="tech-tag">CSS3</span>
+                
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-icons"></i>
+                        </div>
+                        <div class="project-title">Фавикон</div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">Дизайн и реализация фавиконов для веб-сайтов</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                        </div>
+                    </div>
                 </div>
-            </a> <a href="projects/project 7" class="project-card fade-in">
-                <div class="project-number">02</div>
-                <div class="project-icon"><i class="fas fa-clipboard-list"></i></div>
-                <div class="project-title">FAST & EASY</div>
-                <div class="project-description">Оптимизированный интерфейс для быстрого взаимодействия</div>
-                <div class="project-tech">
-                    <span class="tech-tag">HTML5</span>
-                    <span class="tech-tag">CSS3</span>
+                
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="project-title">FAST & EASY</div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">Оптимизированный интерфейс для быстрого взаимодействия</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                        </div>
+                    </div>
                 </div>
-            </a>
+                
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-shoe-prints"></i>
+                        </div>
+                        <div class="project-title">Nike</div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">Редизайн страницы бренда с современными элементами</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="project-title">NFT Маркетплейс</div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">Маркетплейс для NFT с современным дизайном</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Bootstrap5</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="project-title">Email Шаблон</div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">Email-шаблон с современным дизайном и адаптивной версткой</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            </a> <a href="projects/project 10" class="project-card fade-in">
-                <div class="project-number">02</div>
-                <div class="project-icon"><i class="fas fa-clipboard-list"></i></div>
-                <div class="project-title">Nike</div>
-                <div class="project-description">Редизайн страницы бренда с современными элементами</div>
-                <div class="project-tech">
-                    <span class="tech-tag">HTML5</span>
-                    <span class="tech-tag">CSS3</span>
-                    
-                </div>
-            </a>
-        </div>
-            </a> <a href="projects/project 11" class="project-card fade-in">
-                <div class="project-number">02</div>
-                <div class="project-icon"><i class="fas fa-clipboard-list"></i></div>
-                <div class="project-title">Nft - market</div>
-                <div class="project-description">Маркетплейс для NFT </div>
-                <div class="project-tech">
-                    <span class="tech-tag">HTML5</span>
-                    <span class="tech-tag">CSS3</span>
-                    <span class="tech-tag">JavaScript</span>
-                    <span class="tech-tag">Bootstrap5</span>
-                </div>
-            </a>
-    </a> <a href="projects/project 12" class="project-card fade-in">
-                <div class="project-number">02</div>
-                <div class="project-icon"><i class="fas fa-clipboard-list"></i></div>
-                <div class="project-title">Email</div>
-                <div class="project-description">Email - шаблон с современным дизайном</div>
-                <div class="project-tech">
-                    <span class="tech-tag">HTML5</span>
-                    <span class="tech-tag">CSS3</span>
-                </div>
-            </a>
-    
-    
-           
-            
-        </div>
+        </section>
         
-        <footer class="fade-in">
-            <h3>Свяжитесь со мной</h3>
-            <p>Я открыта для новых проектов и возможностей сотрудничества</p>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-vk"></i></a>
-                <a href="#"><i class="fab fa-telegram"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-behance"></i></a>
-            </div>
-            <a href="mailto:polyana.ryazanceva@example.com" class="contact-btn">Написать мне</a>
-            <p style="margin-top: 40px; opacity: 0.7;">© 2025 Полина Рязанцева. Все права защищены.</p>
+        <!-- Пятый блок: Свяжитесь со мной (упрощенный) -->
+        <footer>
+            <h3 class="contact-title fade-in">Свяжитесь со мной</h3>
+            <p class="contact-subtitle fade-in">Я открыта для новых проектов и возможностей сотрудничества</p>
+            <a href="mailto:p.ryazantseva2006@gmail.com" class="contact-btn fade-in">Написать мне</a>
+            <p class="copyright fade-in">© 2025 Полина Рязанцева. Все права защищены.</p>
         </footer>
     </div>
 
     <script>
-        // Создание неоновых частиц
-        function createParticles() {
-            const container = document.getElementById('particles');
-            const particleCount = 25;
-            const colors = ['#8B5FBF', '#6D28D9', '#C084FC', '#A855F7'];
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                // Случайные параметры
-                const size = Math.random() * 6 + 2;
-                const color = colors[Math.floor(Math.random() * colors.length)];
-                
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.background = color;
-                particle.style.animationDelay = `${Math.random() * 10}s`;
-                particle.style.opacity = Math.random() * 0.6 + 0.2;
-                
-                container.appendChild(particle);
-            }
-        }
-        
         // Анимация печатающегося текста
         function typeWriter() {
             const textElement = document.getElementById('typing-text');
@@ -912,11 +775,6 @@
                 setTimeout(type, typingSpeed);
             }
             
-            // Добавляем курсор
-            const cursor = document.createElement('span');
-            cursor.classList.add('cursor');
-            textElement.appendChild(cursor);
-            
             type();
         }
         
@@ -943,7 +801,6 @@
         
         // Инициализация
         document.addEventListener('DOMContentLoaded', function() {
-            createParticles();
             typeWriter();
             animateOnScroll();
         });
