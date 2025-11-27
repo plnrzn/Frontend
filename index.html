@@ -152,7 +152,7 @@
             50% { border-color: var(--mint); }
         }
         
-        /* Профессиональный профиль */
+        
         .about-section {
             margin: 100px 0;
             padding: 80px 0;
@@ -223,7 +223,7 @@
             color: var(--light);
         }
         
-        /* Навыки в виде модульной сетки */
+        
         .skills-section {
             margin: 100px 0;
             padding: 60px 0;
@@ -321,7 +321,7 @@
             width: 20px;
         }
         
-        /* Проекты в виде карточек с акцентным дизайном */
+        
         .projects-section {
             margin: 100px 0;
             padding: 60px 0;
@@ -343,6 +343,9 @@
             transition: var(--transition);
             position: relative;
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
         
         .project-card:hover {
@@ -495,7 +498,7 @@
 </head>
 <body>
     <div class="container">
-        <!-- Первый блок: Заголовок -->
+        
         <header>
             <div class="header-pattern"></div>
             <div class="profile-container fade-in">
@@ -512,7 +515,7 @@
             </div>
         </header>
         
-        <!-- Второй блок: Профессиональный профиль -->
+        
         <section class="about-section">
             <div class="about-container">
                 <div class="about-text fade-in">
@@ -541,7 +544,7 @@
             </div>
         </section>
         
-        <!-- Третий блок: Профессиональные навыки -->
+        
         <section class="skills-section">
             <h2 class="section-title fade-in">Профессиональные Навыки</h2>
             <div class="skills-grid">
@@ -590,11 +593,11 @@
             </div>
         </section>
         
-        <!-- Четвертый блок: Портфолио проектов -->
+        
         <section class="projects-section">
             <h2 class="section-title fade-in">Портфолио Проектов</h2>
             <div class="projects-grid">
-                <div class="project-card fade-in">
+                <a href="projects/project 1" class="project-card fade-in">
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-comments"></i>
@@ -608,9 +611,9 @@
                             <span class="tech-tag">CSS3</span>
                         </div>
                     </div>
-                </div>
+                </a>
                 
-                <div class="project-card fade-in">
+                <a href="projects/project 2" class="project-card fade-in">
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-file-alt"></i>
@@ -624,9 +627,9 @@
                             <span class="tech-tag">CSS3</span>
                         </div>
                     </div>
-                </div>
+                </a>
                 
-                <div class="project-card fade-in">
+                <a href="projects/project 3" class="project-card fade-in">
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-graduation-cap"></i>
@@ -640,9 +643,9 @@
                             <span class="tech-tag">CSS3</span>
                         </div>
                     </div>
-                </div>
+                </a>
                 
-                <div class="project-card fade-in">
+                <a href="projects/project 5" class="project-card fade-in">
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-icons"></i>
@@ -656,9 +659,9 @@
                             <span class="tech-tag">CSS3</span>
                         </div>
                     </div>
-                </div>
+                </a>
                 
-                <div class="project-card fade-in">
+                <a href="projects/project 7" class="project-card fade-in">
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-bolt"></i>
@@ -672,9 +675,9 @@
                             <span class="tech-tag">CSS3</span>
                         </div>
                     </div>
-                </div>
+                </a>
                 
-                <div class="project-card fade-in">
+                <a href="projects/project 10" class="project-card fade-in">
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-shoe-prints"></i>
@@ -688,9 +691,9 @@
                             <span class="tech-tag">CSS3</span>
                         </div>
                     </div>
-                </div>
+                </a>
                 
-                <div class="project-card fade-in">
+                <a href="projects/project 11" class="project-card fade-in">
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-coins"></i>
@@ -706,9 +709,9 @@
                             <span class="tech-tag">Bootstrap5</span>
                         </div>
                     </div>
-                </div>
+                </a>
                 
-                <div class="project-card fade-in">
+                <a href="projects/project 12" class="project-card fade-in">
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-envelope"></i>
@@ -722,11 +725,11 @@
                             <span class="tech-tag">CSS3</span>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         </section>
         
-        <!-- Пятый блок: Свяжитесь со мной (упрощенный) -->
+        
         <footer>
             <h3 class="contact-title fade-in">Свяжитесь со мной</h3>
             <p class="contact-subtitle fade-in">Я открыта для новых проектов и возможностей сотрудничества</p>
@@ -736,7 +739,7 @@
     </div>
 
     <script>
-        // Анимация печатающегося текста
+        
         function typeWriter() {
             const textElement = document.getElementById('typing-text');
             const texts = [
@@ -778,7 +781,7 @@
             type();
         }
         
-        // Анимация появления элементов при скролле
+        
         function animateOnScroll() {
             const elements = document.querySelectorAll('.fade-in');
             
@@ -798,8 +801,7 @@
                 observer.observe(element);
             });
         }
-        
-        // Инициализация
+       
         document.addEventListener('DOMContentLoaded', function() {
             typeWriter();
             animateOnScroll();
