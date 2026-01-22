@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom & Joy - Цветочный магазин</title>
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #e91e63;
+            --secondary-color: #9c27b0;
+            --accent-color: #4caf50;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #333;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 600;
+        }
+        
+        .logo-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: var(--primary-color) !important;
+            font-weight: 700;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(233, 30, 99, 0.85), rgba(156, 39, 176, 0.85)), url('https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 150px 0 100px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 12px 30px;
+            font-weight: 600;
+        }
+        
+        .btn-primary:hover {
+            background-color: #d81b60;
+            border-color: #d81b60;
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(233, 30, 99, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 50px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+        
+        .section-title.text-center::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-img-top {
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .price-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        
+        .badge-category {
+            background: var(--accent-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+        }
+        
+        .footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer h5 {
+            color: var(--light-color);
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            margin-right: 10px;
+            transition: background 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background: var(--primary-color);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+            color: #adb5bd;
+        }
+        
+        .nav-link {
+            font-weight: 600;
+            margin: 0 5px;
+        }
+        
+        .nav-link.active {
+            color: var(--primary-color) !important;
+        }
+        
+        .navbar {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 15px 0;
+            transition: all 0.3s;
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            background: white !important;
+        }
+        
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .testimonial-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+        
+        .contact-info {
+            background: rgba(233, 30, 99, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            height: 100%;
+        }
+        
+        .contact-icon {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+        
+        .carousel-control-prev, .carousel-control-next {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.8;
+        }
+        
+        .carousel-control-prev {
+            left: 20px;
+        }
+        
+        .carousel-control-next {
+            right: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 100px 0 60px;
+            }
+            
+            .logo-text {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+   
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <div class="container">
+            <a class="navbar-brand logo-text" href="#">Bloom & Joy</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#products">Букеты</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">О нас</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Услуги</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Отзывы</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Контакты</a>
+                    </li>
+                    <li class="nav-item ms-3 position-relative">
+                        <a class="btn btn-outline-primary" href="#">
+                            <i class="bi bi-cart3"></i>
+                            <span class="cart-badge">3</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">Цветы, которые говорят о любви</h1>
+                    <p class="lead mb-4">Создаем уникальные букеты и композиции для ваших самых важных моментов. Доставка в день заказа по всему городу.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#products" class="btn btn-primary btn-lg">Выбрать букет</a>
+                        <a href="#contact" class="btn btn-outline-light btn-lg">Заказать доставку</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    
+                    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="1738149399_54660860.jpg" class="d-block w-100 rounded-3 shadow" alt="Букет роз">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="1697115764_30404709.jpg" class="d-block w-100 rounded-3 shadow" alt="Свадебный букет">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="1712917236_29537758.jpg" class="d-block w-100 rounded-3 shadow" alt="Экзотические цветы">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="products" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title text-center">Популярные букеты</h2>
+                    <p class="text-muted">Выберите идеальный букет для любого случая</p>
+                </div>
+            </div>
+            
+            <div class="row">
+               
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="position-relative">
+                            <img src="1675953237_39287853.jpg" class="card-img-top" alt="Букет роз">
+                            <div class="price-tag">2 499 ₽</div>
+                            <span class="badge-category position-absolute" style="top: 15px; left: 15px;">Розы</span>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Классические красные розы</h5>
+                            <p class="card-text text-muted">Букет из 51 алой розы - символ вечной любви и страсти. Идеальный подарок на день рождения, годовщину или просто чтобы выразить свои чувства.</p>
+                            <div class="mt-auto d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-primary">2 499 ₽</span>
+                                <button class="btn btn-primary btn-sm">
+                                    <i class="bi bi-cart-plus me-1"></i> В корзину
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="position-relative">
+                            <img src="1755274355_64052724.jpg" class="card-img-top" alt="Свадебный букет">
+                            <div class="price-tag">3 999 ₽</div>
+                            <span class="badge-category position-absolute" style="top: 15px; left: 15px;">Свадебные</span>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Свадебный букет невесты</h5>
+                            <p class="card-text text-muted">Нежный букет из белых пионов, роз и эвкалипта для самого важного дня в вашей жизни. Дополнительно украшен жемчужными бусинами.</p>
+                            <div class="mt-auto d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-primary">3 999 ₽</span>
+                                <button class="btn btn-primary btn-sm">
+                                    <i class="bi bi-cart-plus me-1"></i> В корзину
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="position-relative">
+                            <img src="1707573814_71016526.jpg" class="card-img-top" alt="Весенний букет">
+                            <div class="price-tag">1 899 ₽</div>
+                            <span class="badge-category position-absolute" style="top: 15px; left: 15px;">Весенние</span>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Весеннее настроение</h5>
+                            <p class="card-text text-muted">Светлый букет из тюльпанов, гиацинтов и фрезий. Создает ощущение свежести и пробуждения природы. Отличный подарок на 8 марта.</p>
+                            <div class="mt-auto d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-primary">1 899 ₽</span>
+                                <button class="btn btn-primary btn-sm">
+                                    <i class="bi bi-cart-plus me-1"></i> В корзину
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="#" class="btn btn-outline-primary btn-lg">Смотреть весь каталог</a>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h2 class="section-title">О нашем магазине</h2>
+                    <p class="lead">Bloom & Joy - это не просто цветочный магазин, а команда флористов-энтузиастов, которые вкладывают душу в каждую композицию.</p>
+                    <p>Мы работаем с 2010 года и за это время создали тысячи уникальных букетов для наших клиентов. Наши цветы поступают напрямую от проверенных поставщиков, что гарантирует их свежесть и качество.</p>
+                    <p>Мы гордимся тем, что можем помочь вам выразить ваши чувства с помощью прекрасных цветов, будь то любовь, благодарность, поддержка или поздравление.</p>
+                    <div class="row mt-4">
+                        <div class="col-md-4 text-center mb-3">
+                            <div class="feature-icon">
+                                <i class="bi bi-flower1"></i>
+                            </div>
+                            <h5>Свежие цветы</h5>
+                        </div>
+                        <div class="col-md-4 text-center mb-3">
+                            <div class="feature-icon">
+                                <i class="bi bi-truck"></i>
+                            </div>
+                            <h5>Быстрая доставка</h5>
+                        </div>
+                        <div class="col-md-4 text-center mb-3">
+                            <div class="feature-icon">
+                                <i class="bi bi-award"></i>
+                            </div>
+                            <h5>Гарантия качества</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="143b51f0d0cddc012c6f9ef35ff22b1f.png" class="img-fluid rounded-3 shadow" alt="Наш магазин">
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <section id="services" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title text-center">Наши услуги</h2>
+                    <p class="text-muted">Мы предлагаем полный спектр флористических услуг</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 text-center">
+                        <div class="card-body p-4">
+                            <div class="feature-icon mb-4">
+                                <i class="bi bi-basket"></i>
+                            </div>
+                            <h4 class="card-title">Создание букетов</h4>
+                            <p class="card-text">Индивидуальный подбор цветов и составление уникальных композиций по вашему вкусу и поводу.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card h-100 text-center">
+                        <div class="card-body p-4">
+                            <div class="feature-icon mb-4">
+                                <i class="bi bi-truck"></i>
+                            </div>
+                            <h4 class="card-title">Доставка цветов</h4>
+                            <p class="card-text">Быстрая и бережная доставка букетов в любую точку города в удобное для вас время.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card h-100 text-center">
+                        <div class="card-body p-4">
+                            <div class="feature-icon mb-4">
+                                <i class="bi bi-calendar-event"></i>
+                            </div>
+                            <h4 class="card-title">Оформление мероприятий</h4>
+                            <p class="card-text">Полное флористическое оформление свадеб, корпоративов, праздников и других мероприятий.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="testimonials" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title text-center">Отзывы клиентов</h2>
+                    <p class="text-muted">Что говорят о нас наши клиенты</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="testimonial-card h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" class="testimonial-avatar" alt="Анна">
+                            <div>
+                                <h5 class="mb-1">Анна Смирнова</h5>
+                                <div class="text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="fst-italic">"Заказывала букет на юбилей мамы. Цветы были свежайшие, простоили больше двух недель! Спасибо за внимание к деталям и быструю доставку."</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <div class="testimonial-card h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://randomuser.me/api/portraits/men/54.jpg" class="testimonial-avatar" alt="Дмитрий">
+                            <div>
+                                <h5 class="mb-1">Дмитрий Иванов</h5>
+                                <div class="text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="fst-italic">"Регулярно заказываю цветы для жены. Всегда свежие, красивые и доставляют вовремя. Флористы создают настоящие произведения искусства!"</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <div class="testimonial-card h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://randomuser.me/api/portraits/women/67.jpg" class="testimonial-avatar" alt="Екатерина">
+                            <div>
+                                <h5 class="mb-1">Екатерина Петрова</h5>
+                                <div class="text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-half"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="fst-italic">"Заказывала оформление свадьбы. Все было идеально! Цветы, декор, арка - все в одном стиле. Гости были в восторге. Спасибо за волшебный день!"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title text-center">Контакты</h2>
+                    <p class="text-muted">Свяжитесь с нами удобным для вас способом</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="contact-info">
+                        <h4 class="mb-4">Наши контакты</h4>
+                        
+                        <div class="d-flex align-items-start mb-4">
+                            <div class="contact-icon">
+                                <i class="bi bi-geo-alt"></i>
+                            </div>
+                            <div>
+                                <h5>Адрес магазина</h5>
+                                <p>ул. Цветочная, д. 15, Москва</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-start mb-4">
+                            <div class="contact-icon">
+                                <i class="bi bi-telephone"></i>
+                            </div>
+                            <div>
+                                <h5>Телефон</h5>
+                                <p>+7 (495) 123-45-67</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-start mb-4">
+                            <div class="contact-icon">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+                            <div>
+                                <h5>Email</h5>
+                                <p>info@bloomandjoy.ru</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-start mb-4">
+                            <div class="contact-icon">
+                                <i class="bi bi-clock"></i>
+                            </div>
+                            <div>
+                                <h5>Часы работы</h5>
+                                <p>Пн-Пт: 9:00 - 21:00<br>Сб-Вс: 10:00 - 20:00</p>
+                            </div>
+                        </div>
+                        
+                        <h5 class="mt-5 mb-3">Мы в соцсетях</h5>
+                        <div class="social-icons">
+                            <a href="#"><i class="bi bi-instagram"></i></a>
+                            <a href="#"><i class="bi bi-facebook"></i></a>
+                           
+                            <a href="#"><i class="bi bi-telegram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <h4 class="mb-4">Форма обратной связи</h4>
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="name" class="form-label">Имя *</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="phone" class="form-label">Телефон *</label>
+                                <input type="tel" class="form-control" id="phone" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email">
+                            </div>
+                            <div class="col-12">
+                                <label for="message" class="form-label">Сообщение</label>
+                                <textarea class="form-control" id="message" rows="5" placeholder="Опишите ваш заказ или задайте вопрос"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">Отправить сообщение</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5 class="logo-text">Bloom & Joy</h5>
+                    <p class="mt-3">Дарим радость и красоту с 2010 года. Свежие цветы, профессиональные флористы и доставка в день заказа.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-telegram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h5>Меню</h5>
+                    <div class="footer-links">
+                        <a href="#home">Главная</a>
+                        <a href="#products">Букеты</a>
+                        <a href="#about">О нас</a>
+                        <a href="#services">Услуги</a>
+                        <a href="#contact">Контакты</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5>Услуги</h5>
+                    <div class="footer-links">
+                        <a href="#">Создание букетов</a>
+                        <a href="#">Доставка цветов</a>
+                        <a href="#">Оформление мероприятий</a>
+                        <a href="#">Корпоративные заказы</a>
+                        <a href="#">Подписка на цветы</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h5>Контакты</h5>
+                    <div class="footer-links">
+                        <a href="tel:+74951234567">+7 (495) 123-45-67</a>
+                        <a href="mailto:info@bloomandjoy.ru">info@bloomandjoy.ru</a>
+                        <p>ул. Цветочная, д. 15<br>Москва, Россия</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-12 text-center copyright">
+                    <p>&copy; 2023 Bloom & Joy. Все права защищены.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Изменение навигационной панели при прокрутке
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Плавная прокрутка для якорных ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Обновление активного пункта меню
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        // Инициализация карусели
+        const heroCarousel = new bootstrap.Carousel(document.getElementById('heroCarousel'), {
+            interval: 3000,
+            ride: 'carousel'
+        });
+    </script>
+</body>
+</html>
